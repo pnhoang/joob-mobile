@@ -1,1 +1,3 @@
-export const API_URL = "http://localhost:3000/api";
+import Constants from 'expo-constants';
+
+export const API_URL = Constants.expoConfig?.extra?.apiUrl || "https://react-native-book-worm.vercel.app";

@@ -23,7 +23,15 @@ export const useAuthStore = create((set) => ({
         }),
       });
 
-      const data = await response.json();
+      const contentType = response.headers.get("content-type");
+      let data;
+
+      if (contentType && contentType.includes("application/json")) {
+        data = await response.json();
+      } else {
+        const text = await response.text();
+        throw new Error(text || "Server returned non-JSON response");
+      }
 
       if (!response.ok) throw new Error(data.message || "Something went wrong");
 
@@ -54,7 +62,15 @@ export const useAuthStore = create((set) => ({
         }),
       });
 
-      const data = await response.json();
+      const contentType = response.headers.get("content-type");
+      let data;
+
+      if (contentType && contentType.includes("application/json")) {
+        data = await response.json();
+      } else {
+        const text = await response.text();
+        throw new Error(text || "Server returned non-JSON response");
+      }
 
       if (!response.ok) throw new Error(data.message || "Something went wrong");
 

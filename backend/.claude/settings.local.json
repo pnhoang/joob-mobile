@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm start)",
+      "Bash(npm run dev:*)",
+      "Bash(curl:*)",
+      "Bash(cat:*)",
+      "Bash(node:*)",
+      "Bash(lsof:*)",
+      "Bash(pkill:*)",
+      "Bash(kill:*)",
+      "Bash(xargs kill:*)"
+    ]
+  }
+}
