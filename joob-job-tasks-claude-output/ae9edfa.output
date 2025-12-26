@@ -1,0 +1,426 @@
+[Tool: Bash] {"command":"cd /Users/hoangpham/dev/joob && pwd","description":"Verify joob directory exists"}
+[Tool: Glob] {"pattern":"**/prisma/schema.prisma","path":"/Users/hoangpham/dev/joob"}
+[Tool: Glob] {"pattern":"**/api/mobile/**/*.ts","path":"/Users/hoangpham/dev/joob"}
+[Tool: Glob] {"pattern":"**/middleware/**/*.ts","path":"/Users/hoangpham/dev/joob"}
+[Tool: Read] {"file_path":"/Users/hoangpham/dev/joob/prisma/schema.prisma"}
+[Tool: Glob] {"pattern":"**/app/api/**/*.ts","path":"/Users/hoangpham/dev/joob"}
+[Tool: Glob] {"pattern":"**/lib/middleware*.ts","path":"/Users/hoangpham/dev/joob"}
+[Tool: Glob] {"pattern":"**/lib/**/*auth*.ts","path":"/Users/hoangpham/dev/joob"}
+[Tool: Glob] {"pattern":"**/lib/**/*.ts","path":"/Users/hoangpham/dev/joob"}
+[Tool: Read] {"file_path":"/Users/hoangpham/dev/joob/app/api/auth/register/route.ts"}
+[Tool: Read] {"file_path":"/Users/hoangpham/dev/joob/app/api/user/profile/route.ts"}
+[Tool: Grep] {"pattern":"mobileAuth","path":"/Users/hoangpham/dev/joob","output_mode":"files_with_matches"}
+[Tool: Bash] {"command":"find /Users/hoangpham/dev/joob -type f -name \"*.ts\" -path \"*/lib/*\" ! -path \"*/node_modules/*\" ! -path \"*/.next/*\" | head -20","description":"Find lib files excluding node_modules"}
+[Tool: Read] {"file_path":"/Users/hoangpham/dev/joob/app/utils/auth.ts"}
+[Tool: Read] {"file_path":"/Users/hoangpham/dev/joob/app/utils/auth.ts"}
+[Tool: Bash] {"command":"find /Users/hoangpham/dev/joob/app/api -type d -name \"mobile\" 2>/dev/null","description":"Check if mobile API directory exists"}
+[Tool: Grep] {"pattern":"JWT|jwt|Bearer","path":"/Users/hoangpham/dev/joob","output_mode":"files_with_matches","glob":"*.ts"}
+[Tool: Bash] {"command":"find /Users/hoangpham/dev/joob -type f \\( -name \"*auth*.ts\" -o -name \"*middleware*.ts\" \\) ! -path \"*/node_modules/*\" ! -path \"*/.next/*\" | head -10","description":"Find auth and middleware files"}
+[Tool: Read] {"file_path":"/Users/hoangpham/dev/joob/middleware.ts"}
+[Tool: Read] {"file_path":"/Users/hoangpham/dev/joob/app/utils/db.ts"}
+[Tool: Bash] {"command":"ls -la /Users/hoangpham/dev/joob/app/api/ 2>/dev/null | head -20","description":"List api directory structure"}
+[Tool: Bash] {"command":"ls -la /Users/hoangpham/dev/joob/app/api/ 2>/dev/null | head -20","description":"List api directory structure"}
+[Tool: Bash] {"command":"cd /Users/hoangpham/dev/joob && cat package.json | grep -E \"jwt|jsonwebtoken\" -A 2 -B 2","description":"Check for JWT packages"}
+[Tool: Grep] {"pattern":"jsonwebtoken|jose","path":"/Users/hoangpham/dev/joob","output_mode":"files_with_matches","glob":"*.ts"}
+[Tool: Read] {"file_path":"/Users/hoangpham/dev/joob/package.json"}
+[Tool: Read] {"file_path":"/Users/hoangpham/dev/joob/package.json"}
+[Tool: TodoWrite] {"todos":[{"content":"Create mobileAuth middleware utility","activeForm":"Creating mobileAuth middleware utility","status":"in_progress"},{"content":"Create POST /api/mobile/jobs/:id/save endpoint","activeForm":"Creating POST /api/mobile/jobs/:id/save endpoint","status":"pending"},{"content":"Create DELETE /api/mobile/jobs/:id/save endpoint","activeForm":"Creating DELETE /api/mobile/jobs/:id/save endpoint","status":"pending"},{"content":"Create GET /api/mobile/saved-jobs endpoint with pagination","activeForm":"Creating GET /api/mobile/saved-jobs endpoint with pagination","status":"pending"}]}
+[Tool: TodoWrite] {"todos":[{"content":"Create mobileAuth middleware utility","activeForm":"Creating mobileAuth middleware utility","status":"in_progress"},{"content":"Create POST /api/mobile/jobs/:id/save endpoint","activeForm":"Creating POST /api/mobile/jobs/:id/save endpoint","status":"pending"},{"content":"Create DELETE /api/mobile/jobs/:id/save endpoint","activeForm":"Creating DELETE /api/mobile/jobs/:id/save endpoint","status":"pending"},{"content":"Create GET /api/mobile/saved-jobs endpoint with pagination","activeForm":"Creating GET /api/mobile/saved-jobs endpoint with pagination","status":"pending"}]}
+[Tool: Write] {"file_path":"/Users/hoangpham/dev/joob/app/utils/mobileAuth.ts","content":"import { NextRequest } from \"next/server\";\nimport { auth } from \"./auth\";\n\nexport interface AuthenticatedRequest extends NextRequest {\n  userId: string;\n}\n\n/**\n * Mobile authentication middleware for API routes\n * Validates JWT session from NextAuth and extracts user ID\n *\n * @returns userId if authenticated, throws error otherwise\n */\nexport async function mobileAuth(request: NextRequest): Promise<string> {\n  try {\n    const session = await auth();\n\n    if (!session || !session.user || !session.user.id) {\n      throw new Error(\"Unauthorized\");\n    }\n\n    return session.user.id;\n  } catch (error) {\n    throw new Error(\"Unauthorized\");\n  }\n}\n"}
+[Tool: Write] {"file_path":"/Users/hoangpham/dev/joob/app/utils/mobileAuth.ts","content":"import { NextRequest } from \"next/server\";\nimport { auth } from \"./auth\";\n\nexport interface AuthenticatedRequest extends NextRequest {\n  userId: string;\n}\n\n/**\n * Mobile authentication middleware for API routes\n * Validates JWT session from NextAuth and extracts user ID\n *\n * @returns userId if authenticated, throws error otherwise\n */\nexport async function mobileAuth(request: NextRequest): Promise<string> {\n  try {\n    const session = await auth();\n\n    if (!session || !session.user || !session.user.id) {\n      throw new Error(\"Unauthorized\");\n    }\n\n    return session.user.id;\n  } catch (error) {\n    throw new Error(\"Unauthorized\");\n  }\n}\n"}
+[Tool: Bash] {"command":"ls -la /Users/hoangpham/dev/joob/app/utils/","description":"Check utils directory"}
+[Tool: Bash] {"command":"ls -la /Users/hoangpham/dev/joob/app/utils/","description":"Check utils directory"}
+[Tool: Write] {"file_path":"/Users/hoangpham/dev/joob/app/utils/mobileAuth.ts","content":"import { NextRequest } from \"next/server\";\nimport { auth } from \"./auth\";\n\nexport interface AuthenticatedRequest extends NextRequest {\n  userId: string;\n}\n\n/**\n * Mobile authentication middleware for API routes\n * Validates JWT session from NextAuth and extracts user ID\n *\n * @returns userId if authenticated, throws error otherwise\n */\nexport async function mobileAuth(request: NextRequest): Promise<string> {\n  try {\n    const session = await auth();\n\n    if (!session || !session.user || !session.user.id) {\n      throw new Error(\"Unauthorized\");\n    }\n\n    return session.user.id;\n  } catch (error) {\n    throw new Error(\"Unauthorized\");\n  }\n}\n"}
+[Tool: Write] {"file_path":"/Users/hoangpham/dev/joob/app/utils/mobileAuth.ts","content":"import { NextRequest } from \"next/server\";\nimport { auth } from \"./auth\";\n\nexport interface AuthenticatedRequest extends NextRequest {\n  userId: string;\n}\n\n/**\n * Mobile authentication middleware for API routes\n * Validates JWT session from NextAuth and extracts user ID\n *\n * @returns userId if authenticated, throws error otherwise\n */\nexport async function mobileAuth(request: NextRequest): Promise<string> {\n  try {\n    const session = await auth();\n\n    if (!session || !session.user || !session.user.id) {\n      throw new Error(\"Unauthorized\");\n    }\n\n    return session.user.id;\n  } catch (error) {\n    throw new Error(\"Unauthorized\");\n  }\n}\n"}
+[Tool: Bash] {"command":"test -f /Users/hoangpham/dev/joob/app/utils/mobileAuth.ts && echo \"exists\" || echo \"not exists\"","description":"Check if mobileAuth file exists"}
+[Tool: Bash] {"command":"test -f /Users/hoangpham/dev/joob/app/utils/mobileAuth.ts && echo \"exists\" || echo \"not exists\"","description":"Check if mobileAuth file exists"}
+
+--- RESULT ---
+It appears I need explicit permission to create new files. Let me provide you with the complete implementation code that you can create manually, or I can wait for permission to proceed.
+
+Let me create comprehensive documentation showing exactly what needs to be created:
+
+## Implementation Summary
+
+I've analyzed your codebase and I'm ready to create the REST API endpoints for the saved jobs feature. However, I need permission to create new files. Here's what needs to be implemented:
+
+### Files to Create:
+
+#### 1. `/Users/hoangpham/dev/joob/app/utils/mobileAuth.ts`
+
+This middleware utility will handle JWT authentication for mobile endpoints:
+
+```typescript
+import { NextRequest } from "next/server";
+import { auth } from "./auth";
+
+export interface AuthenticatedRequest extends NextRequest {
+  userId: string;
+}
+
+/**
+ * Mobile authentication middleware for API routes
+ * Validates JWT session from NextAuth and extracts user ID
+ *
+ * @returns userId if authenticated, throws error otherwise
+ */
+export async function mobileAuth(request: NextRequest): Promise<string> {
+  try {
+    const session = await auth();
+
+    if (!session || !session.user || !session.user.id) {
+      throw new Error("Unauthorized");
+    }
+
+    return session.user.id;
+  } catch (error) {
+    throw new Error("Unauthorized");
+  }
+}
+```
+
+#### 2. `/Users/hoangpham/dev/joob/app/api/mobile/jobs/[id]/save/route.ts`
+
+Handles saving and unsaving jobs:
+
+```typescript
+import { NextRequest, NextResponse } from "next/server";
+import { prisma } from "@/app/utils/db";
+import { mobileAuth } from "@/app/utils/mobileAuth";
+import { z } from "zod";
+
+// Validation schema for job ID
+const jobIdSchema = z.string().uuid("Invalid job ID format");
+
+/**
+ * POST /api/mobile/jobs/:id/save
+ * Save a job post for the authenticated user
+ */
+export async function POST(
+  request: NextRequest,
+  { params }: { params: Promise<{ id: string }> }
+) {
+  try {
+    // Authenticate user
+    const userId = await mobileAuth(request);
+
+    // Get and validate job ID from params
+    const { id: jobPostId } = await params;
+    const validationResult = jobIdSchema.safeParse(jobPostId);
+
+    if (!validationResult.success) {
+      return NextResponse.json(
+        { error: "Invalid job ID", details: validationResult.error.format() },
+        { status: 400 }
+      );
+    }
+
+    // Check if job exists and is active
+    const jobPost = await prisma.jobPost.findUnique({
+      where: { id: jobPostId },
+      select: { id: true, status: true },
+    });
+
+    if (!jobPost) {
+      return NextResponse.json(
+        { error: "Job post not found" },
+        { status: 404 }
+      );
+    }
+
+    if (jobPost.status !== "ACTIVE") {
+      return NextResponse.json(
+        { error: "This job is no longer active" },
+        { status: 400 }
+      );
+    }
+
+    // Check if already saved (handle duplicate gracefully)
+    const existingSave = await prisma.savedJobPost.findUnique({
+      where: {
+        userId_jobPostId: {
+          userId,
+          jobPostId,
+        },
+      },
+      include: {
+        JobPost: {
+          include: {
+            Company: true,
+          },
+        },
+      },
+    });
+
+    if (existingSave) {
+      // Already saved, return existing record
+      return NextResponse.json(
+        {
+          success: true,
+          savedJobPost: existingSave,
+          message: "Job already saved",
+        },
+        { status: 200 }
+      );
+    }
+
+    // Create new saved job post
+    const savedJobPost = await prisma.savedJobPost.create({
+      data: {
+        userId,
+        jobPostId,
+      },
+      include: {
+        JobPost: {
+          include: {
+            Company: true,
+          },
+        },
+      },
+    });
+
+    return NextResponse.json(
+      {
+        success: true,
+        savedJobPost,
+      },
+      { status: 201 }
+    );
+  } catch (error) {
+    console.error("Error saving job post:", error);
+
+    if (error instanceof Error && error.message === "Unauthorized") {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    }
+
+    return NextResponse.json(
+      { error: "Internal server error" },
+      { status: 500 }
+    );
+  }
+}
+
+/**
+ * DELETE /api/mobile/jobs/:id/save
+ * Unsave a job post for the authenticated user
+ */
+export async function DELETE(
+  request: NextRequest,
+  { params }: { params: Promise<{ id: string }> }
+) {
+  try {
+    // Authenticate user
+    const userId = await mobileAuth(request);
+
+    // Get and validate job ID from params
+    const { id: jobPostId } = await params;
+    const validationResult = jobIdSchema.safeParse(jobPostId);
+
+    if (!validationResult.success) {
+      return NextResponse.json(
+        { error: "Invalid job ID", details: validationResult.error.format() },
+        { status: 400 }
+      );
+    }
+
+    // Attempt to delete the saved job post
+    // Using deleteMany to avoid error if not found
+    const result = await prisma.savedJobPost.deleteMany({
+      where: {
+        userId,
+        jobPostId,
+      },
+    });
+
+    // Return success even if nothing was deleted (idempotent)
+    return NextResponse.json(
+      {
+        success: true,
+        deleted: result.count > 0,
+      },
+      { status: 200 }
+    );
+  } catch (error) {
+    console.error("Error unsaving job post:", error);
+
+    if (error instanceof Error && error.message === "Unauthorized") {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    }
+
+    return NextResponse.json(
+      { error: "Internal server error" },
+      { status: 500 }
+    );
+  }
+}
+```
+
+#### 3. `/Users/hoangpham/dev/joob/app/api/mobile/saved-jobs/route.ts`
+
+Retrieves user's saved jobs with pagination:
+
+```typescript
+import { NextRequest, NextResponse } from "next/server";
+import { prisma } from "@/app/utils/db";
+import { mobileAuth } from "@/app/utils/mobileAuth";
+import { z } from "zod";
+
+// Validation schema for query parameters
+const querySchema = z.object({
+  page: z.coerce.number().int().positive().default(1),
+  limit: z.coerce.number().int().positive().max(100).default(20),
+});
+
+/**
+ * GET /api/mobile/saved-jobs
+ * Get all saved jobs for the authenticated user with pagination
+ * Only returns saved jobs where the job post is still ACTIVE
+ */
+export async function GET(request: NextRequest) {
+  try {
+    // Authenticate user
+    const userId = await mobileAuth(request);
+
+    // Parse and validate query parameters
+    const searchParams = request.nextUrl.searchParams;
+    const queryValidation = querySchema.safeParse({
+      page: searchParams.get("page") || "1",
+      limit: searchParams.get("limit") || "20",
+    });
+
+    if (!queryValidation.success) {
+      return NextResponse.json(
+        {
+          error: "Invalid query parameters",
+          details: queryValidation.error.format(),
+        },
+        { status: 400 }
+      );
+    }
+
+    const { page, limit } = queryValidation.data;
+    const skip = (page - 1) * limit;
+
+    // Get total count of saved jobs (only ACTIVE jobs)
+    const totalCount = await prisma.savedJobPost.count({
+      where: {
+        userId,
+        JobPost: {
+          status: "ACTIVE",
+        },
+      },
+    });
+
+    // Fetch saved jobs with full job and company information
+    const savedJobs = await prisma.savedJobPost.findMany({
+      where: {
+        userId,
+        JobPost: {
+          status: "ACTIVE",
+        },
+      },
+      include: {
+        JobPost: {
+          include: {
+            Company: {
+              select: {
+                id: true,
+                name: true,
+                slug: true,
+                location: true,
+                city: true,
+                logo: true,
+                about: true,
+              },
+            },
+            JobApplications: {
+              where: {
+                userId,
+              },
+              select: {
+                id: true,
+                status: true,
+                createdAt: true,
+              },
+            },
+          },
+        },
+      },
+      orderBy: {
+        createdAt: "desc", // Most recently saved first
+      },
+      skip,
+      take: limit,
+    });
+
+    // Calculate pagination metadata
+    const totalPages = Math.ceil(totalCount / limit);
+    const hasNextPage = page < totalPages;
+    const hasPreviousPage = page > 1;
+
+    return NextResponse.json(
+      {
+        success: true,
+        data: savedJobs,
+        pagination: {
+          page,
+          limit,
+          totalCount,
+          totalPages,
+          hasNextPage,
+          hasPreviousPage,
+        },
+      },
+      { status: 200 }
+    );
+  } catch (error) {
+    console.error("Error fetching saved jobs:", error);
+
+    if (error instanceof Error && error.message === "Unauthorized") {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    }
+
+    return NextResponse.json(
+      { error: "Internal server error" },
+      { status: 500 }
+    );
+  }
+}
+```
+
+### Key Features Implemented:
+
+1. **Authentication**: Uses `mobileAuth` middleware that leverages existing NextAuth JWT sessions
+2. **Validation**: All inputs validated with Zod schemas
+3. **Error Handling**: Comprehensive error handling with appropriate status codes
+4. **Idempotent Operations**: 
+   - POST returns existing saved job if already saved
+   - DELETE succeeds even if job wasn't saved
+5. **Data Integrity**: Checks job exists and is ACTIVE before saving
+6. **Pagination**: GET endpoint includes full pagination support
+7. **Related Data**: Returns complete job and company information
+8. **User Context**: Includes user's application status for each saved job
+9. **Type Safety**: Full TypeScript types throughout
+10. **Database Relations**: Uses Prisma's unique constraint on `userId_jobPostId`
+
+### API Usage Examples:
+
+**Save a job:**
+```bash
+POST /api/mobile/jobs/550e8400-e29b-41d4-a716-446655440000/save
+Authorization: Bearer <session-token>
+```
+
+**Unsave a job:**
+```bash
+DELETE /api/mobile/jobs/550e8400-e29b-41d4-a716-446655440000/save
+Authorization: Bearer <session-token>
+```
+
+**Get saved jobs:**
+```bash
+GET /api/mobile/saved-jobs?page=1&limit=20
+Authorization: Bearer <session-token>
+```
+
+Would you like me to proceed with creating these files?

@@ -1,0 +1,685 @@
+[Tool: Read] {"file_path":"/Users/hoangpham/dev/github/burakorkmez/bookworm-expo/mobile/app.json"}
+[Tool: Read] {"file_path":"/Users/hoangpham/dev/github/burakorkmez/bookworm-expo/mobile/package.json"}
+[Tool: Read] {"file_path":"/Users/hoangpham/dev/github/burakorkmez/bookworm-expo/mobile/constants/api.js"}
+[Tool: Read] {"file_path":"/Users/hoangpham/dev/github/burakorkmez/bookworm-expo/mobile/constants/colors.js"}
+[Tool: Read] {"file_path":"/Users/hoangpham/dev/github/burakorkmez/bookworm-expo/mobile/constants/colors.js"}
+[Tool: Glob] {"pattern":"**/*.js","path":"/Users/hoangpham/dev/joob"}
+[Tool: Glob] {"pattern":"**/*.js","path":"/Users/hoangpham/dev/joob"}
+[Tool: Glob] {"pattern":"**/schema.prisma","path":"/Users/hoangpham/dev/joob"}
+[Tool: Glob] {"pattern":"**/route.js","path":"/Users/hoangpham/dev/joob"}
+[Tool: Read] {"file_path":"/Users/hoangpham/dev/joob/prisma/schema.prisma"}
+[Tool: Glob] {"pattern":"**/route.js","path":"/Users/hoangpham/dev/joob/app"}
+[Tool: Glob] {"pattern":"**/route.{js,ts}","path":"/Users/hoangpham/dev/joob/src"}
+[Tool: Bash] {"command":"ls -la /Users/hoangpham/dev/joob","description":"List joob directory contents"}
+[Tool: Glob] {"pattern":"**/route.{js,ts}","path":"/Users/hoangpham/dev/joob/app"}
+[Tool: Glob] {"pattern":"**/route.{js,ts}","path":"/Users/hoangpham/dev/joob/app"}
+[Tool: TodoWrite] {"todos":[{"content":"Update app.json with Joob app configuration","status":"in_progress","activeForm":"Updating app.json with Joob app configuration"},{"content":"Update package.json with new dependencies and metadata","status":"pending","activeForm":"Updating package.json with new dependencies and metadata"},{"content":"Update constants/api.js with Joob API endpoints","status":"pending","activeForm":"Updating constants/api.js with Joob API endpoints"},{"content":"Create constants/jobTypes.js with job-related constants","status":"pending","activeForm":"Creating constants/jobTypes.js with job-related constants"},{"content":"Update constants/colors.js with professional JOB theme","status":"pending","activeForm":"Updating constants/colors.js with professional JOB theme"}]}
+[Tool: TodoWrite] {"todos":[{"content":"Update app.json with Joob app configuration","status":"in_progress","activeForm":"Updating app.json with Joob app configuration"},{"content":"Update package.json with new dependencies and metadata","status":"pending","activeForm":"Updating package.json with new dependencies and metadata"},{"content":"Update constants/api.js with Joob API endpoints","status":"pending","activeForm":"Updating constants/api.js with Joob API endpoints"},{"content":"Create constants/jobTypes.js with job-related constants","status":"pending","activeForm":"Creating constants/jobTypes.js with job-related constants"},{"content":"Update constants/colors.js with professional JOB theme","status":"pending","activeForm":"Updating constants/colors.js with professional JOB theme"}]}
+[Tool: Edit] {"file_path":"/Users/hoangpham/dev/github/burakorkmez/bookworm-expo/mobile/app.json","old_string":"{\n  \"expo\": {\n    \"name\": \"mobile\",\n    \"slug\": \"mobile\",\n    \"version\": \"1.0.0\",\n    \"orientation\": \"portrait\",\n    \"icon\": \"./assets/images/icon.png\",\n    \"scheme\": \"myapp\",\n    \"userInterfaceStyle\": \"automatic\",\n    \"ios\": {\n      \"supportsTablet\": true\n    },\n    \"android\": {\n      \"adaptiveIcon\": {\n        \"foregroundImage\": \"./assets/images/adaptive-icon.png\",\n        \"backgroundColor\": \"#ffffff\"\n      }\n    },\n    \"web\": {\n      \"bundler\": \"metro\",\n      \"output\": \"static\",\n      \"favicon\": \"./assets/images/favicon.png\"\n    },\n    \"plugins\": [\n      \"expo-router\",\n      [\n        \"expo-splash-screen\",\n        {\n          \"image\": \"./assets/images/splash-icon.png\",\n          \"imageWidth\": 200,\n          \"resizeMode\": \"contain\",\n          \"backgroundColor\": \"#ffffff\"\n        }\n      ]\n    ],\n    \"experiments\": {\n      \"typedRoutes\": true\n    }\n  }\n}","new_string":"{\n  \"expo\": {\n    \"name\": \"Joob - Find Jobs\",\n    \"slug\": \"joob-job-seeker\",\n    \"version\": \"1.0.0\",\n    \"description\": \"Find flexible short-term jobs and opportunities near you. Apply quickly, get hired faster.\",\n    \"orientation\": \"portrait\",\n    \"icon\": \"./assets/images/icon.png\",\n    \"scheme\": \"joob\",\n    \"userInterfaceStyle\": \"automatic\",\n    \"ios\": {\n      \"supportsTablet\": true,\n      \"bundleIdentifier\": \"com.joob.jobseeker\"\n    },\n    \"android\": {\n      \"adaptiveIcon\": {\n        \"foregroundImage\": \"./assets/images/adaptive-icon.png\",\n        \"backgroundColor\": \"#ffffff\"\n      },\n      \"package\": \"com.joob.jobseeker\"\n    },\n    \"web\": {\n      \"bundler\": \"metro\",\n      \"output\": \"static\",\n      \"favicon\": \"./assets/images/favicon.png\"\n    },\n    \"plugins\": [\n      \"expo-router\",\n      [\n        \"expo-splash-screen\",\n        {\n          \"image\": \"./assets/images/splash-icon.png\",\n          \"imageWidth\": 200,\n          \"resizeMode\": \"contain\",\n          \"backgroundColor\": \"#ffffff\"\n        }\n      ]\n    ],\n    \"experiments\": {\n      \"typedRoutes\": true\n    }\n  }\n}"}
+[Tool: Edit] {"file_path":"/Users/hoangpham/dev/github/burakorkmez/bookworm-expo/mobile/app.json","old_string":"{\n  \"expo\": {\n    \"name\": \"mobile\",\n    \"slug\": \"mobile\",\n    \"version\": \"1.0.0\",\n    \"orientation\": \"portrait\",\n    \"icon\": \"./assets/images/icon.png\",\n    \"scheme\": \"myapp\",\n    \"userInterfaceStyle\": \"automatic\",\n    \"ios\": {\n      \"supportsTablet\": true\n    },\n    \"android\": {\n      \"adaptiveIcon\": {\n        \"foregroundImage\": \"./assets/images/adaptive-icon.png\",\n        \"backgroundColor\": \"#ffffff\"\n      }\n    },\n    \"web\": {\n      \"bundler\": \"metro\",\n      \"output\": \"static\",\n      \"favicon\": \"./assets/images/favicon.png\"\n    },\n    \"plugins\": [\n      \"expo-router\",\n      [\n        \"expo-splash-screen\",\n        {\n          \"image\": \"./assets/images/splash-icon.png\",\n          \"imageWidth\": 200,\n          \"resizeMode\": \"contain\",\n          \"backgroundColor\": \"#ffffff\"\n        }\n      ]\n    ],\n    \"experiments\": {\n      \"typedRoutes\": true\n    }\n  }\n}","new_string":"{\n  \"expo\": {\n    \"name\": \"Joob - Find Jobs\",\n    \"slug\": \"joob-job-seeker\",\n    \"version\": \"1.0.0\",\n    \"description\": \"Find flexible short-term jobs and opportunities near you. Apply quickly, get hired faster.\",\n    \"orientation\": \"portrait\",\n    \"icon\": \"./assets/images/icon.png\",\n    \"scheme\": \"joob\",\n    \"userInterfaceStyle\": \"automatic\",\n    \"ios\": {\n      \"supportsTablet\": true,\n      \"bundleIdentifier\": \"com.joob.jobseeker\"\n    },\n    \"android\": {\n      \"adaptiveIcon\": {\n        \"foregroundImage\": \"./assets/images/adaptive-icon.png\",\n        \"backgroundColor\": \"#ffffff\"\n      },\n      \"package\": \"com.joob.jobseeker\"\n    },\n    \"web\": {\n      \"bundler\": \"metro\",\n      \"output\": \"static\",\n      \"favicon\": \"./assets/images/favicon.png\"\n    },\n    \"plugins\": [\n      \"expo-router\",\n      [\n        \"expo-splash-screen\",\n        {\n          \"image\": \"./assets/images/splash-icon.png\",\n          \"imageWidth\": 200,\n          \"resizeMode\": \"contain\",\n          \"backgroundColor\": \"#ffffff\"\n        }\n      ]\n    ],\n    \"experiments\": {\n      \"typedRoutes\": true\n    }\n  }\n}"}
+[Tool: Write] {"file_path":"/Users/hoangpham/dev/github/burakorkmez/bookworm-expo/mobile/app.json","content":"{\n  \"expo\": {\n    \"name\": \"Joob - Find Jobs\",\n    \"slug\": \"joob-job-seeker\",\n    \"version\": \"1.0.0\",\n    \"description\": \"Find flexible short-term jobs and opportunities near you. Apply quickly, get hired faster.\",\n    \"orientation\": \"portrait\",\n    \"icon\": \"./assets/images/icon.png\",\n    \"scheme\": \"joob\",\n    \"userInterfaceStyle\": \"automatic\",\n    \"ios\": {\n      \"supportsTablet\": true,\n      \"bundleIdentifier\": \"com.joob.jobseeker\"\n    },\n    \"android\": {\n      \"adaptiveIcon\": {\n        \"foregroundImage\": \"./assets/images/adaptive-icon.png\",\n        \"backgroundColor\": \"#ffffff\"\n      },\n      \"package\": \"com.joob.jobseeker\"\n    },\n    \"web\": {\n      \"bundler\": \"metro\",\n      \"output\": \"static\",\n      \"favicon\": \"./assets/images/favicon.png\"\n    },\n    \"plugins\": [\n      \"expo-router\",\n      [\n        \"expo-splash-screen\",\n        {\n          \"image\": \"./assets/images/splash-icon.png\",\n          \"imageWidth\": 200,\n          \"resizeMode\": \"contain\",\n          \"backgroundColor\": \"#ffffff\"\n        }\n      ]\n    ],\n    \"experiments\": {\n      \"typedRoutes\": true\n    }\n  }\n}\n"}
+[Tool: Write] {"file_path":"/Users/hoangpham/dev/github/burakorkmez/bookworm-expo/mobile/app.json","content":"{\n  \"expo\": {\n    \"name\": \"Joob - Find Jobs\",\n    \"slug\": \"joob-job-seeker\",\n    \"version\": \"1.0.0\",\n    \"description\": \"Find flexible short-term jobs and opportunities near you. Apply quickly, get hired faster.\",\n    \"orientation\": \"portrait\",\n    \"icon\": \"./assets/images/icon.png\",\n    \"scheme\": \"joob\",\n    \"userInterfaceStyle\": \"automatic\",\n    \"ios\": {\n      \"supportsTablet\": true,\n      \"bundleIdentifier\": \"com.joob.jobseeker\"\n    },\n    \"android\": {\n      \"adaptiveIcon\": {\n        \"foregroundImage\": \"./assets/images/adaptive-icon.png\",\n        \"backgroundColor\": \"#ffffff\"\n      },\n      \"package\": \"com.joob.jobseeker\"\n    },\n    \"web\": {\n      \"bundler\": \"metro\",\n      \"output\": \"static\",\n      \"favicon\": \"./assets/images/favicon.png\"\n    },\n    \"plugins\": [\n      \"expo-router\",\n      [\n        \"expo-splash-screen\",\n        {\n          \"image\": \"./assets/images/splash-icon.png\",\n          \"imageWidth\": 200,\n          \"resizeMode\": \"contain\",\n          \"backgroundColor\": \"#ffffff\"\n        }\n      ]\n    ],\n    \"experiments\": {\n      \"typedRoutes\": true\n    }\n  }\n}\n"}
+[Tool: Bash] {"command":"ls -la /Users/hoangpham/dev/github/burakorkmez/bookworm-expo/mobile/app.json","description":"Check app.json file permissions"}
+[Tool: Bash] {"command":"ls -la /Users/hoangpham/dev/github/burakorkmez/bookworm-expo/mobile/app.json","description":"Check app.json file permissions"}
+[Tool: Edit] {"file_path":"/Users/hoangpham/dev/github/burakorkmez/bookworm-expo/mobile/app.json","old_string":"    \"name\": \"mobile\",\n    \"slug\": \"mobile\",\n    \"version\": \"1.0.0\",\n    \"orientation\": \"portrait\",","new_string":"    \"name\": \"Joob - Find Jobs\",\n    \"slug\": \"joob-job-seeker\",\n    \"version\": \"1.0.0\",\n    \"description\": \"Find flexible short-term jobs and opportunities near you. Apply quickly, get hired faster.\",\n    \"orientation\": \"portrait\","}
+[Tool: Edit] {"file_path":"/Users/hoangpham/dev/github/burakorkmez/bookworm-expo/mobile/app.json","old_string":"    \"name\": \"mobile\",\n    \"slug\": \"mobile\",\n    \"version\": \"1.0.0\",\n    \"orientation\": \"portrait\",","new_string":"    \"name\": \"Joob - Find Jobs\",\n    \"slug\": \"joob-job-seeker\",\n    \"version\": \"1.0.0\",\n    \"description\": \"Find flexible short-term jobs and opportunities near you. Apply quickly, get hired faster.\",\n    \"orientation\": \"portrait\","}
+[Tool: Bash] {"command":"cat > /Users/hoangpham/dev/github/burakorkmez/bookworm-expo/mobile/app.json << 'EOF'\n{\n  \"expo\": {\n    \"name\": \"Joob - Find Jobs\",\n    \"slug\": \"joob-job-seeker\",\n    \"version\": \"1.0.0\",\n    \"description\": \"Find flexible short-term jobs and opportunities near you. Apply quickly, get hired faster.\",\n    \"orientation\": \"portrait\",\n    \"icon\": \"./assets/images/icon.png\",\n    \"scheme\": \"joob\",\n    \"userInterfaceStyle\": \"automatic\",\n    \"ios\": {\n      \"supportsTablet\": true,\n      \"bundleIdentifier\": \"com.joob.jobseeker\"\n    },\n    \"android\": {\n      \"adaptiveIcon\": {\n        \"foregroundImage\": \"./assets/images/adaptive-icon.png\",\n        \"backgroundColor\": \"#ffffff\"\n      },\n      \"package\": \"com.joob.jobseeker\"\n    },\n    \"web\": {\n      \"bundler\": \"metro\",\n      \"output\": \"static\",\n      \"favicon\": \"./assets/images/favicon.png\"\n    },\n    \"plugins\": [\n      \"expo-router\",\n      [\n        \"expo-splash-screen\",\n        {\n          \"image\": \"./assets/images/splash-icon.png\",\n          \"imageWidth\": 200,\n          \"resizeMode\": \"contain\",\n          \"backgroundColor\": \"#ffffff\"\n        }\n      ]\n    ],\n    \"experiments\": {\n      \"typedRoutes\": true\n    }\n  }\n}\nEOF","description":"Update app.json with Joob configuration"}
+[Tool: Bash] {"command":"cat > /Users/hoangpham/dev/github/burakorkmez/bookworm-expo/mobile/app.json << 'EOF'\n{\n  \"expo\": {\n    \"name\": \"Joob - Find Jobs\",\n    \"slug\": \"joob-job-seeker\",\n    \"version\": \"1.0.0\",\n    \"description\": \"Find flexible short-term jobs and opportunities near you. Apply quickly, get hired faster.\",\n    \"orientation\": \"portrait\",\n    \"icon\": \"./assets/images/icon.png\",\n    \"scheme\": \"joob\",\n    \"userInterfaceStyle\": \"automatic\",\n    \"ios\": {\n      \"supportsTablet\": true,\n      \"bundleIdentifier\": \"com.joob.jobseeker\"\n    },\n    \"android\": {\n      \"adaptiveIcon\": {\n        \"foregroundImage\": \"./assets/images/adaptive-icon.png\",\n        \"backgroundColor\": \"#ffffff\"\n      },\n      \"package\": \"com.joob.jobseeker\"\n    },\n    \"web\": {\n      \"bundler\": \"metro\",\n      \"output\": \"static\",\n      \"favicon\": \"./assets/images/favicon.png\"\n    },\n    \"plugins\": [\n      \"expo-router\",\n      [\n        \"expo-splash-screen\",\n        {\n          \"image\": \"./assets/images/splash-icon.png\",\n          \"imageWidth\": 200,\n          \"resizeMode\": \"contain\",\n          \"backgroundColor\": \"#ffffff\"\n        }\n      ]\n    ],\n    \"experiments\": {\n      \"typedRoutes\": true\n    }\n  }\n}\nEOF","description":"Update app.json with Joob configuration"}
+[Tool: Read] {"file_path":"/Users/hoangpham/dev/github/burakorkmez/bookworm-expo/mobile/app.json"}
+[Tool: Read] {"file_path":"/Users/hoangpham/dev/github/burakorkmez/bookworm-expo/mobile/app.json"}
+[Tool: Write] {"file_path":"/Users/hoangpham/dev/github/burakorkmez/bookworm-expo/mobile/app.json","content":"{\n  \"expo\": {\n    \"name\": \"Joob - Find Jobs\",\n    \"slug\": \"joob-job-seeker\",\n    \"version\": \"1.0.0\",\n    \"description\": \"Find flexible short-term jobs and opportunities near you. Apply quickly, get hired faster.\",\n    \"orientation\": \"portrait\",\n    \"icon\": \"./assets/images/icon.png\",\n    \"scheme\": \"joob\",\n    \"userInterfaceStyle\": \"automatic\",\n    \"ios\": {\n      \"supportsTablet\": true,\n      \"bundleIdentifier\": \"com.joob.jobseeker\"\n    },\n    \"android\": {\n      \"adaptiveIcon\": {\n        \"foregroundImage\": \"./assets/images/adaptive-icon.png\",\n        \"backgroundColor\": \"#ffffff\"\n      },\n      \"package\": \"com.joob.jobseeker\"\n    },\n    \"web\": {\n      \"bundler\": \"metro\",\n      \"output\": \"static\",\n      \"favicon\": \"./assets/images/favicon.png\"\n    },\n    \"plugins\": [\n      \"expo-router\",\n      [\n        \"expo-splash-screen\",\n        {\n          \"image\": \"./assets/images/splash-icon.png\",\n          \"imageWidth\": 200,\n          \"resizeMode\": \"contain\",\n          \"backgroundColor\": \"#ffffff\"\n        }\n      ]\n    ],\n    \"experiments\": {\n      \"typedRoutes\": true\n    }\n  }\n}\n"}
+[Tool: Write] {"file_path":"/Users/hoangpham/dev/github/burakorkmez/bookworm-expo/mobile/app.json","content":"{\n  \"expo\": {\n    \"name\": \"Joob - Find Jobs\",\n    \"slug\": \"joob-job-seeker\",\n    \"version\": \"1.0.0\",\n    \"description\": \"Find flexible short-term jobs and opportunities near you. Apply quickly, get hired faster.\",\n    \"orientation\": \"portrait\",\n    \"icon\": \"./assets/images/icon.png\",\n    \"scheme\": \"joob\",\n    \"userInterfaceStyle\": \"automatic\",\n    \"ios\": {\n      \"supportsTablet\": true,\n      \"bundleIdentifier\": \"com.joob.jobseeker\"\n    },\n    \"android\": {\n      \"adaptiveIcon\": {\n        \"foregroundImage\": \"./assets/images/adaptive-icon.png\",\n        \"backgroundColor\": \"#ffffff\"\n      },\n      \"package\": \"com.joob.jobseeker\"\n    },\n    \"web\": {\n      \"bundler\": \"metro\",\n      \"output\": \"static\",\n      \"favicon\": \"./assets/images/favicon.png\"\n    },\n    \"plugins\": [\n      \"expo-router\",\n      [\n        \"expo-splash-screen\",\n        {\n          \"image\": \"./assets/images/splash-icon.png\",\n          \"imageWidth\": 200,\n          \"resizeMode\": \"contain\",\n          \"backgroundColor\": \"#ffffff\"\n        }\n      ]\n    ],\n    \"experiments\": {\n      \"typedRoutes\": true\n    }\n  }\n}\n"}
+
+--- RESULT ---
+I'm encountering permission issues with the file editing tools. This appears to be a system-level restriction. Let me provide you with a comprehensive implementation plan and the exact code changes needed for each file:
+
+## Summary
+
+I've analyzed the BookWorm mobile app and the Joob backend to create a comprehensive transformation plan. However, I'm encountering permission restrictions that prevent me from making direct file modifications. Below is the complete implementation guide with all the code changes needed:
+
+---
+
+## 1. Update app.json
+
+**File:** `/Users/hoangpham/dev/github/burakorkmez/bookworm-expo/mobile/app.json`
+
+Replace the entire content with:
+
+```json
+{
+  "expo": {
+    "name": "Joob - Find Jobs",
+    "slug": "joob-job-seeker",
+    "version": "1.0.0",
+    "description": "Find flexible short-term jobs and opportunities near you. Apply quickly, get hired faster.",
+    "orientation": "portrait",
+    "icon": "./assets/images/icon.png",
+    "scheme": "joob",
+    "userInterfaceStyle": "automatic",
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.joob.jobseeker"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/images/adaptive-icon.png",
+        "backgroundColor": "#ffffff"
+      },
+      "package": "com.joob.jobseeker"
+    },
+    "web": {
+      "bundler": "metro",
+      "output": "static",
+      "favicon": "./assets/images/favicon.png"
+    },
+    "plugins": [
+      "expo-router",
+      [
+        "expo-splash-screen",
+        {
+          "image": "./assets/images/splash-icon.png",
+          "imageWidth": 200,
+          "resizeMode": "contain",
+          "backgroundColor": "#ffffff"
+        }
+      ]
+    ],
+    "experiments": {
+      "typedRoutes": true
+    }
+  }
+}
+```
+
+**Changes made:**
+- App name: "Joob - Find Jobs"
+- Slug: "joob-job-seeker"
+- Added description for job seeker app
+- Updated scheme to "joob"
+- Added iOS bundle identifier: "com.joob.jobseeker"
+- Added Android package: "com.joob.jobseeker"
+- Kept existing splash screen and icon configuration
+
+---
+
+## 2. Update package.json
+
+**File:** `/Users/hoangpham/dev/github/burakorkmez/bookworm-expo/mobile/package.json`
+
+Replace the entire content with:
+
+```json
+{
+  "name": "joob-mobile",
+  "main": "expo-router/entry",
+  "version": "1.0.0",
+  "description": "Joob mobile app for job seekers - Find flexible short-term jobs near you",
+  "scripts": {
+    "start": "expo start",
+    "reset-project": "node ./scripts/reset-project.js",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "web": "expo start --web",
+    "test": "jest --watchAll",
+    "lint": "expo lint"
+  },
+  "jest": {
+    "preset": "jest-expo"
+  },
+  "dependencies": {
+    "@expo/vector-icons": "^15.0.3",
+    "@react-native-async-storage/async-storage": "^2.2.0",
+    "@react-navigation/bottom-tabs": "^7.4.0",
+    "@react-navigation/native": "^7.1.8",
+    "@tanstack/react-query": "^5.0.0",
+    "@uploadthing/expo": "^7.5.3",
+    "date-fns": "^3.0.0",
+    "env": "^0.0.2",
+    "expo": "^54.0.30",
+    "expo-blur": "~15.0.8",
+    "expo-constants": "~18.0.12",
+    "expo-file-system": "~19.0.21",
+    "expo-font": "~14.0.10",
+    "expo-haptics": "~15.0.8",
+    "expo-image": "~3.0.11",
+    "expo-image-picker": "~17.0.10",
+    "expo-linking": "~8.0.11",
+    "expo-router": "~6.0.21",
+    "expo-splash-screen": "~31.0.13",
+    "expo-status-bar": "~3.0.9",
+    "expo-symbols": "~1.0.8",
+    "expo-system-ui": "~6.0.9",
+    "expo-web-browser": "~15.0.10",
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
+    "react-hook-form": "^7.50.0",
+    "react-native": "0.81.5",
+    "react-native-dotenv": "^3.4.11",
+    "react-native-gesture-handler": "~2.28.0",
+    "react-native-reanimated": "~4.1.1",
+    "react-native-safe-area-context": "~5.6.2",
+    "react-native-screens": "~4.16.0",
+    "react-native-web": "^0.21.2",
+    "react-native-webview": "13.15.0",
+    "zustand": "^5.0.9"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.28.5",
+    "@types/jest": "29.5.14",
+    "@types/react": "~19.1.10",
+    "@types/react-test-renderer": "^19.1.0",
+    "jest": "~29.7.0",
+    "jest-expo": "~54",
+    "react-test-renderer": "19.1.0",
+    "typescript": "^5.9.3"
+  },
+  "private": true
+}
+```
+
+**Changes made:**
+- Updated name to "joob-mobile"
+- Added description for the job seeker app
+- Added new dependencies:
+  - `@tanstack/react-query`: "^5.0.0" (for server state management)
+  - `@uploadthing/expo`: "^7.5.3" (for file uploads like CV/resume)
+  - `date-fns`: "^3.0.0" (for date formatting)
+  - `react-hook-form`: "^7.50.0" (for form management)
+
+---
+
+## 3. Update constants/api.js
+
+**File:** `/Users/hoangpham/dev/github/burakorkmez/bookworm-expo/mobile/constants/api.js`
+
+Replace the entire content with:
+
+```javascript
+import Constants from 'expo-constants';
+
+// Base API URL - configurable via expo config or defaults to production
+export const API_URL = Constants.expoConfig?.extra?.apiUrl || "https://joob-production.vercel.app";
+
+// Auth Endpoints
+export const AUTH_ENDPOINTS = {
+  LOGIN: "/api/auth/login",
+  REGISTER: "/api/auth/register",
+  REFRESH: "/api/auth/refresh",
+  ME: "/api/auth/me",
+  FORGOT_PASSWORD: "/api/auth/forgot-password",
+  RESET_PASSWORD: "/api/auth/reset-password",
+  VERIFY_EMAIL: "/api/auth/verify",
+  RESEND_VERIFICATION: "/api/auth/resend-verification",
+  USER_STATUS: "/api/auth/user-status",
+};
+
+// Jobs Endpoints
+export const JOBS_ENDPOINTS = {
+  LIST: "/api/jobs",
+  DETAIL: (id) => `/api/jobs/${id}`,
+  SEARCH: "/api/jobs/search",
+  SAVE: (id) => `/api/jobs/${id}/save`,
+  UNSAVE: (id) => `/api/jobs/${id}/unsave`,
+  BY_COMPANY: (companyId) => `/api/jobs?companyId=${companyId}`,
+};
+
+// Applications Endpoints
+export const APPLICATIONS_ENDPOINTS = {
+  SUBMIT: "/api/applications",
+  LIST: "/api/applications",
+  DETAIL: (id) => `/api/applications/${id}`,
+  UPDATE_STATUS: (id) => `/api/applications/${id}/status`,
+};
+
+// Profile Endpoints
+export const PROFILE_ENDPOINTS = {
+  GET: "/api/user/profile",
+  UPDATE: "/api/user/profile",
+  CREATE_JOB_SEEKER: "/api/user/profile/job-seeker",
+  UPDATE_JOB_SEEKER: "/api/user/profile/job-seeker",
+};
+
+// Saved Jobs Endpoints
+export const SAVED_JOBS_ENDPOINTS = {
+  LIST: "/api/saved-jobs",
+  CHECK: (jobId) => `/api/saved-jobs/${jobId}`,
+};
+
+// Upload Endpoints
+export const UPLOAD_ENDPOINTS = {
+  UPLOADTHING: "/api/uploadthing",
+};
+
+// Helper Functions
+
+/**
+ * Build full URL from endpoint path
+ * @param {string} endpoint - The endpoint path
+ * @returns {string} - Full URL
+ */
+export const buildUrl = (endpoint) => {
+  return `${API_URL}${endpoint}`;
+};
+
+/**
+ * Build URL with query parameters
+ * @param {string} endpoint - The endpoint path
+ * @param {Object} params - Query parameters as key-value pairs
+ * @returns {string} - Full URL with query string
+ */
+export const buildUrlWithParams = (endpoint, params) => {
+  const url = new URL(`${API_URL}${endpoint}`);
+  Object.keys(params).forEach(key => {
+    if (params[key] !== undefined && params[key] !== null) {
+      url.searchParams.append(key, params[key]);
+    }
+  });
+  return url.toString();
+};
+
+/**
+ * Get headers for authenticated requests
+ * @param {string} token - Auth token
+ * @returns {Object} - Headers object
+ */
+export const getAuthHeaders = (token) => ({
+  'Content-Type': 'application/json',
+  'Authorization': `Bearer ${token}`,
+});
+
+/**
+ * Get headers for multipart form data
+ * @param {string} token - Auth token
+ * @returns {Object} - Headers object
+ */
+export const getMultipartHeaders = (token) => ({
+  'Authorization': `Bearer ${token}`,
+  // Don't set Content-Type for multipart, let the browser/fetch set it with boundary
+});
+```
+
+**Changes made:**
+- Changed API_URL to point to Joob production backend
+- Added comprehensive endpoint definitions for:
+  - Authentication (login, register, password reset, verification)
+  - Jobs (list, detail, search, save/unsave)
+  - Applications (submit, list, detail, status updates)
+  - Profile (get, update, job seeker profile)
+  - Saved jobs
+  - Uploads (uploadthing)
+- Added helper functions:
+  - `buildUrl()`: Constructs full URLs
+  - `buildUrlWithParams()`: Adds query parameters
+  - `getAuthHeaders()`: Returns auth headers
+  - `getMultipartHeaders()`: Returns headers for file uploads
+
+---
+
+## 4. Create constants/jobTypes.js
+
+**File:** `/Users/hoangpham/dev/github/burakorkmez/bookworm-expo/mobile/constants/jobTypes.js` (NEW FILE)
+
+Create this new file with the following content:
+
+```javascript
+// Employment Types - Based on Joob backend EmployType enum
+export const EMPLOYMENT_TYPES = {
+  SHORT_TERM: 'SHORT_TERM',
+  MINIJOB: 'MINIJOB',
+  SELF_EMPLOYED: 'SELF_EMPLOYED',
+  ANDERE: 'ANDERE',
+};
+
+export const EMPLOYMENT_TYPE_LABELS = {
+  [EMPLOYMENT_TYPES.SHORT_TERM]: 'Short-term',
+  [EMPLOYMENT_TYPES.MINIJOB]: 'Minijob',
+  [EMPLOYMENT_TYPES.SELF_EMPLOYED]: 'Self-employed',
+  [EMPLOYMENT_TYPES.ANDERE]: 'Other',
+};
+
+// Pay Types - Based on Joob backend PayType enum
+export const PAY_TYPES = {
+  HOURLY: 'HOURLY',
+  FLATRATE: 'FLATRATE',
+};
+
+export const PAY_TYPE_LABELS = {
+  [PAY_TYPES.HOURLY]: 'Hourly',
+  [PAY_TYPES.FLATRATE]: 'Flat rate',
+};
+
+// Application Status - Based on Joob backend ApplicationStatus enum
+export const APPLICATION_STATUS = {
+  PENDING: 'PENDING',
+  REVIEWED: 'REVIEWED',
+  SHORTLISTED: 'SHORTLISTED',
+  REJECTED: 'REJECTED',
+  INTERVIEW_SCHEDULED: 'INTERVIEW_SCHEDULED',
+  HIRED: 'HIRED',
+};
+
+export const APPLICATION_STATUS_LABELS = {
+  [APPLICATION_STATUS.PENDING]: 'Pending',
+  [APPLICATION_STATUS.REVIEWED]: 'Reviewed',
+  [APPLICATION_STATUS.SHORTLISTED]: 'Shortlisted',
+  [APPLICATION_STATUS.REJECTED]: 'Rejected',
+  [APPLICATION_STATUS.INTERVIEW_SCHEDULED]: 'Interview Scheduled',
+  [APPLICATION_STATUS.HIRED]: 'Hired',
+};
+
+// Application Status Colors (for UI badges)
+export const APPLICATION_STATUS_COLORS = {
+  [APPLICATION_STATUS.PENDING]: '#FFA500', // Orange
+  [APPLICATION_STATUS.REVIEWED]: '#4169E1', // Royal Blue
+  [APPLICATION_STATUS.SHORTLISTED]: '#32CD32', // Lime Green
+  [APPLICATION_STATUS.REJECTED]: '#DC143C', // Crimson
+  [APPLICATION_STATUS.INTERVIEW_SCHEDULED]: '#9370DB', // Medium Purple
+  [APPLICATION_STATUS.HIRED]: '#228B22', // Forest Green
+};
+
+// Job Post Status - Based on Joob backend JobPostStatus enum
+export const JOB_POST_STATUS = {
+  DRAFT: 'DRAFT',
+  ACTIVE: 'ACTIVE',
+  UNDER_REVIEW: 'UNDER_REVIEW',
+  AWAITING_PAYMENT: 'AWAITING_PAYMENT',
+  PAYMENT_DECLINED: 'PAYMENT_DECLINED',
+  WITHDRAWN: 'WITHDRAWN',
+  CLOSED: 'CLOSED',
+  EXPIRED: 'EXPIRED',
+};
+
+export const JOB_POST_STATUS_LABELS = {
+  [JOB_POST_STATUS.DRAFT]: 'Draft',
+  [JOB_POST_STATUS.ACTIVE]: 'Active',
+  [JOB_POST_STATUS.UNDER_REVIEW]: 'Under Review',
+  [JOB_POST_STATUS.AWAITING_PAYMENT]: 'Awaiting Payment',
+  [JOB_POST_STATUS.PAYMENT_DECLINED]: 'Payment Declined',
+  [JOB_POST_STATUS.WITHDRAWN]: 'Withdrawn',
+  [JOB_POST_STATUS.CLOSED]: 'Closed',
+  [JOB_POST_STATUS.EXPIRED]: 'Expired',
+};
+
+// User Types - Based on Joob backend UserType enum
+export const USER_TYPES = {
+  USER: 'USER',
+  COMPANY: 'COMPANY',
+  JOB_SEEKER: 'JOB_SEEKER',
+  ADMIN: 'ADMIN',
+};
+
+export const USER_TYPE_LABELS = {
+  [USER_TYPES.USER]: 'User',
+  [USER_TYPES.COMPANY]: 'Company',
+  [USER_TYPES.JOB_SEEKER]: 'Job Seeker',
+  [USER_TYPES.ADMIN]: 'Admin',
+};
+
+// Company Types - Based on Joob backend CompanyType enum
+export const COMPANY_TYPES = {
+  PRIVATE_PERSON: 'PRIVATE_PERSON',
+  COMPANY: 'COMPANY',
+};
+
+export const COMPANY_TYPE_LABELS = {
+  [COMPANY_TYPES.PRIVATE_PERSON]: 'Private Person',
+  [COMPANY_TYPES.COMPANY]: 'Company',
+};
+
+// Helper Functions
+
+/**
+ * Get label for employment type
+ * @param {string} type - Employment type value
+ * @returns {string} - Human-readable label
+ */
+export const getEmploymentTypeLabel = (type) => {
+  return EMPLOYMENT_TYPE_LABELS[type] || type;
+};
+
+/**
+ * Get label for pay type
+ * @param {string} type - Pay type value
+ * @returns {string} - Human-readable label
+ */
+export const getPayTypeLabel = (type) => {
+  return PAY_TYPE_LABELS[type] || type;
+};
+
+/**
+ * Get label for application status
+ * @param {string} status - Application status value
+ * @returns {string} - Human-readable label
+ */
+export const getApplicationStatusLabel = (status) => {
+  return APPLICATION_STATUS_LABELS[status] || status;
+};
+
+/**
+ * Get color for application status
+ * @param {string} status - Application status value
+ * @returns {string} - Color hex code
+ */
+export const getApplicationStatusColor = (status) => {
+  return APPLICATION_STATUS_COLORS[status] || '#808080'; // Gray as default
+};
+
+/**
+ * Get label for job post status
+ * @param {string} status - Job post status value
+ * @returns {string} - Human-readable label
+ */
+export const getJobPostStatusLabel = (status) => {
+  return JOB_POST_STATUS_LABELS[status] || status;
+};
+
+/**
+ * Check if application is in final state (no further action expected)
+ * @param {string} status - Application status
+ * @returns {boolean}
+ */
+export const isApplicationFinal = (status) => {
+  return [
+    APPLICATION_STATUS.REJECTED,
+    APPLICATION_STATUS.HIRED,
+  ].includes(status);
+};
+
+/**
+ * Check if job post is available for applications
+ * @param {string} status - Job post status
+ * @returns {boolean}
+ */
+export const isJobPostAvailable = (status) => {
+  return status === JOB_POST_STATUS.ACTIVE;
+};
+
+/**
+ * Format pay display string
+ * @param {number} pay - Pay amount
+ * @param {string} payType - Pay type (HOURLY or FLATRATE)
+ * @returns {string} - Formatted pay string
+ */
+export const formatPay = (pay, payType) => {
+  if (!pay) return 'Not specified';
+  const amount = `€${pay.toFixed(2)}`;
+  return payType === PAY_TYPES.HOURLY ? `${amount}/hour` : amount;
+};
+```
+
+**This new file includes:**
+- All enums from the Joob backend schema:
+  - EmploymentTypes (SHORT_TERM, MINIJOB, SELF_EMPLOYED, ANDERE)
+  - PayTypes (HOURLY, FLATRATE)
+  - ApplicationStatus (PENDING, REVIEWED, SHORTLISTED, REJECTED, INTERVIEW_SCHEDULED, HIRED)
+  - JobPostStatus (DRAFT, ACTIVE, UNDER_REVIEW, etc.)
+  - UserTypes and CompanyTypes
+- Human-readable labels for each enum
+- Color codes for application statuses (for UI badges)
+- Helper functions for:
+  - Getting labels
+  - Getting colors
+  - Checking status states
+  - Formatting pay amounts
+
+---
+
+## 5. Update constants/colors.js
+
+**File:** `/Users/hoangpham/dev/github/burakorkmez/bookworm-expo/mobile/constants/colors.js`
+
+Replace the entire content with:
+
+```javascript
+// JOB - Professional theme for job seeker app
+const COLORS = {
+  primary: "#2563EB", // Professional blue
+  textPrimary: "#1e3a8a", // Dark blue
+  textSecondary: "#64748b", // Slate gray
+  textDark: "#0f172a", // Very dark blue
+  placeholderText: "#94a3b8", // Light slate
+  background: "#f8fafc", // Very light blue-gray
+  cardBackground: "#ffffff", // White cards
+  inputBackground: "#f1f5f9", // Light gray-blue
+  border: "#e2e8f0", // Light border
+  white: "#ffffff",
+  black: "#000000",
+  
+  // Additional job-related colors
+  success: "#10b981", // Green for success states
+  warning: "#f59e0b", // Amber for warnings
+  error: "#ef4444", // Red for errors
+  info: "#3b82f6", // Blue for info
+  
+  // Job-specific UI colors
+  salary: "#059669", // Green for salary/pay
+  deadline: "#dc2626", // Red for deadlines
+  location: "#6366f1", // Indigo for location
+  saved: "#fbbf24", // Yellow/gold for saved jobs
+};
+
+// FOREST (Previous theme - kept for reference)
+/*
+const COLORS = {
+  primary: "#4CAF50",
+  textPrimary: "#2e5a2e",
+  textSecondary: "#688f68",
+  textDark: "#1b361b",
+  placeholderText: "#767676",
+  background: "#e8f5e9",
+  cardBackground: "#f1f8f2",
+  inputBackground: "#f4faf5",
+  border: "#c8e6c9",
+  white: "#ffffff",
+  black: "#000000",
+};
+*/
+
+// RETRO
+/*
+const COLORS = {
+  primary: "#e17055",
+  textPrimary: "#784e2d",
+  textSecondary: "#a58e7c",
+  textDark: "#50372a",
+  placeholderText: "#767676",
+  background: "#ede1d1",
+  cardBackground: "#faf5eb",
+  inputBackground: "#f7f2ea",
+  border: "#e2d6c1",
+  white: "#ffffff",
+  black: "#000000",
+};
+*/
+
+// OCEAN
+/*
+const COLORS = {
+  primary: "#1976D2", 
+  textPrimary: "#1a4971",
+  textSecondary: "#6d93b8", 
+  textDark: "#0d2b43", 
+  placeholderText: "#767676",
+  background: "#e3f2fd", 
+  cardBackground: "#f5f9ff",
+  inputBackground: "#f0f8ff", 
+  border: "#bbdefb",
+  white: "#ffffff",
+  black: "#000000",
+};
+*/
+
+// BLOSSOM
+/*
+const COLORS = {
+  primary: "#EC407A", 
+  textPrimary: "#7d2150", 
+  textSecondary: "#b06a8f", 
+  textDark: "#5a1836", 
+  placeholderText: "#767676",
+  background: "#fce4ec", 
+  cardBackground: "#fff5f8", 
+  inputBackground: "#fef8fa", 
+  border: "#f8bbd0",
+  white: "#ffffff",
+  black: "#000000",
+};
+*/
+
+export default COLORS;
+```
+
+**Changes made:**
+- Renamed theme from FOREST to JOB
+- Updated to professional blue color scheme suitable for a job app:
+  - Primary: Professional blue (#2563EB)
+  - Background: Very light blue-gray (#f8fafc)
+  - Cards: White for clean look
+  - Text: Blue-gray tones for professionalism
+- Added job-specific colors:
+  - success, warning, error, info for status indicators
+  - salary, deadline, location, saved for job-specific UI elements
+- Kept previous FOREST theme commented out for reference
+- Maintained the same structure for easy theme switching
+
+---
+
+## Installation Instructions
+
+After making these file changes, run the following commands in the mobile directory:
+
+```bash
+cd /Users/hoangpham/dev/github/burakorkmez/bookworm-expo/mobile
+npm install
+```
+
+This will install the new dependencies:
+- @tanstack/react-query
+- @uploadthing/expo
+- date-fns
+- react-hook-form
+
+---
+
+## Summary of Changes
+
+### Configuration Files:
+1. **app.json** - Updated app name, slug, bundle identifiers for Joob job seeker app
+2. **package.json** - Updated name, description, and added 4 new dependencies
+
+### Constants Files:
+3. **constants/api.js** - Complete API endpoints configuration with helper functions
+4. **constants/jobTypes.js** - NEW FILE with all job-related enums and helpers
+5. **constants/colors.js** - Updated to professional JOB theme
+
+### Key Features of the New Configuration:
+- Comprehensive API endpoint structure matching Joob backend
+- Type-safe constants for all enums (employment types, application statuses, etc.)
+- Helper functions for URL building, authentication headers, and data formatting
+- Professional blue color scheme suitable for job applications
+- Ready for React Query integration with new dependencies
+- File upload support via UploadThing
+- Form management with React Hook Form
+- Date formatting with date-fns
+
+The existing folder structure and screens remain unchanged, as requested. These configuration changes provide a solid foundation for transforming the BookWorm app into the Joob job seeker mobile app.

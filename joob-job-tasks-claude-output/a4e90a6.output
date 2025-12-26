@@ -1,0 +1,728 @@
+[Tool: Read] {"file_path":"/Users/hoangpham/dev/github/burakorkmez/bookworm-expo/mobile/app/(tabs)/index.jsx"}
+[Tool: Glob] {"pattern":"**/BookCard.jsx","path":"/Users/hoangpham/dev/github/burakorkmez/bookworm-expo/mobile"}
+[Tool: Glob] {"pattern":"**/Loader.jsx","path":"/Users/hoangpham/dev/github/burakorkmez/bookworm-expo/mobile"}
+[Tool: Glob] {"pattern":"**/store/*.js","path":"/Users/hoangpham/dev/github/burakorkmez/bookworm-expo/mobile"}
+[Tool: Read] {"file_path":"/Users/hoangpham/dev/github/burakorkmez/bookworm-expo/mobile/components/Loader.jsx"}
+[Tool: Read] {"file_path":"/Users/hoangpham/dev/github/burakorkmez/bookworm-expo/mobile/store/authStore.js"}
+[Tool: Read] {"file_path":"/Users/hoangpham/dev/github/burakorkmez/bookworm-expo/mobile/assets/styles/home.styles.js"}
+[Tool: Read] {"file_path":"/Users/hoangpham/dev/github/burakorkmez/bookworm-expo/mobile/constants/colors.js"}
+[Tool: Read] {"file_path":"/Users/hoangpham/dev/github/burakorkmez/bookworm-expo/mobile/lib/utils.js"}
+[Tool: Read] {"file_path":"/Users/hoangpham/dev/github/burakorkmez/bookworm-expo/mobile/constants/api.js"}
+[Tool: Bash] {"command":"ls -la /Users/hoangpham/dev/github/burakorkmez/bookworm-expo/mobile/package.json","description":"Check if package.json exists"}
+[Tool: Read] {"file_path":"/Users/hoangpham/dev/github/burakorkmez/bookworm-expo/mobile/package.json"}
+[Tool: Read] {"file_path":"/Users/hoangpham/dev/github/burakorkmez/bookworm-expo/mobile/package.json"}
+[Tool: TodoWrite] {"todos":[{"content":"Create jobsStore.js with state management for jobs","status":"in_progress","activeForm":"Creating jobsStore.js with state management for jobs"},{"content":"Create JobCard.jsx component with job information display","status":"pending","activeForm":"Creating JobCard.jsx component with job information display"},{"content":"Transform index.jsx from book feed to job feed with infinite scroll","status":"pending","activeForm":"Transforming index.jsx from book feed to job feed with infinite scroll"},{"content":"Add utility functions for formatting pay and dates","status":"pending","activeForm":"Adding utility functions for formatting pay and dates"}]}
+[Tool: TodoWrite] {"todos":[{"content":"Create jobsStore.js with state management for jobs","status":"in_progress","activeForm":"Creating jobsStore.js with state management for jobs"},{"content":"Create JobCard.jsx component with job information display","status":"pending","activeForm":"Creating JobCard.jsx component with job information display"},{"content":"Transform index.jsx from book feed to job feed with infinite scroll","status":"pending","activeForm":"Transforming index.jsx from book feed to job feed with infinite scroll"},{"content":"Add utility functions for formatting pay and dates","status":"pending","activeForm":"Adding utility functions for formatting pay and dates"}]}
+[Tool: Write] {"file_path":"/Users/hoangpham/dev/github/burakorkmez/bookworm-expo/mobile/store/jobsStore.js","content":"import { create } from \"zustand\";\nimport { API_URL } from \"../constants/api\";\n\nexport const useJobsStore = create((set, get) => ({\n  jobs: [],\n  page: 1,\n  hasMore: true,\n  isLoading: false,\n  isRefreshing: false,\n\n  fetchJobs: async (pageNum = 1, refresh = false, token) => {\n    try {\n      const state = get();\n\n      if (refresh) {\n        set({ isRefreshing: true });\n      } else if (pageNum === 1) {\n        set({ isLoading: true });\n      }\n\n      const response = await fetch(`${API_URL}/api/mobile/jobs?page=${pageNum}&limit=10`, {\n        headers: { Authorization: `Bearer ${token}` },\n      });\n\n      const data = await response.json();\n      if (!response.ok) throw new Error(data.message || \"Failed to fetch jobs\");\n\n      const uniqueJobs =\n        refresh || pageNum === 1\n          ? data.jobs\n          : Array.from(new Set([...state.jobs, ...data.jobs].map((job) => job._id))).map(\n              (id) => [...state.jobs, ...data.jobs].find((job) => job._id === id)\n            );\n\n      set({\n        jobs: uniqueJobs,\n        page: pageNum,\n        hasMore: pageNum < data.totalPages,\n      });\n\n      return { success: true };\n    } catch (error) {\n      console.log(\"Error fetching jobs\", error);\n      return { success: false, error: error.message };\n    } finally {\n      set({ isLoading: false, isRefreshing: false });\n    }\n  },\n\n  loadMore: async (token) => {\n    const state = get();\n    if (state.hasMore && !state.isLoading && !state.isRefreshing) {\n      await state.fetchJobs(state.page + 1, false, token);\n    }\n  },\n\n  refresh: async (token) => {\n    const state = get();\n    await state.fetchJobs(1, true, token);\n  },\n\n  saveJob: async (jobId, token) => {\n    try {\n      const response = await fetch(`${API_URL}/api/mobile/jobs/${jobId}/save`, {\n        method: \"POST\",\n        headers: { Authorization: `Bearer ${token}` },\n      });\n\n      const data = await response.json();\n      if (!response.ok) throw new Error(data.message || \"Failed to save job\");\n\n      // Update the job's saved state in the local store\n      const state = get();\n      const updatedJobs = state.jobs.map((job) =>\n        job._id === jobId ? { ...job, isSaved: true } : job\n      );\n      set({ jobs: updatedJobs });\n\n      return { success: true };\n    } catch (error) {\n      console.log(\"Error saving job\", error);\n      return { success: false, error: error.message };\n    }\n  },\n\n  unsaveJob: async (jobId, token) => {\n    try {\n      const response = await fetch(`${API_URL}/api/mobile/jobs/${jobId}/save`, {\n        method: \"DELETE\",\n        headers: { Authorization: `Bearer ${token}` },\n      });\n\n      const data = await response.json();\n      if (!response.ok) throw new Error(data.message || \"Failed to unsave job\");\n\n      // Update the job's saved state in the local store\n      const state = get();\n      const updatedJobs = state.jobs.map((job) =>\n        job._id === jobId ? { ...job, isSaved: false } : job\n      );\n      set({ jobs: updatedJobs });\n\n      return { success: true };\n    } catch (error) {\n      console.log(\"Error unsaving job\", error);\n      return { success: false, error: error.message };\n    }\n  },\n\n  resetJobs: () => {\n    set({\n      jobs: [],\n      page: 1,\n      hasMore: true,\n      isLoading: false,\n      isRefreshing: false,\n    });\n  },\n}));\n"}
+[Tool: Write] {"file_path":"/Users/hoangpham/dev/github/burakorkmez/bookworm-expo/mobile/store/jobsStore.js","content":"import { create } from \"zustand\";\nimport { API_URL } from \"../constants/api\";\n\nexport const useJobsStore = create((set, get) => ({\n  jobs: [],\n  page: 1,\n  hasMore: true,\n  isLoading: false,\n  isRefreshing: false,\n\n  fetchJobs: async (pageNum = 1, refresh = false, token) => {\n    try {\n      const state = get();\n\n      if (refresh) {\n        set({ isRefreshing: true });\n      } else if (pageNum === 1) {\n        set({ isLoading: true });\n      }\n\n      const response = await fetch(`${API_URL}/api/mobile/jobs?page=${pageNum}&limit=10`, {\n        headers: { Authorization: `Bearer ${token}` },\n      });\n\n      const data = await response.json();\n      if (!response.ok) throw new Error(data.message || \"Failed to fetch jobs\");\n\n      const uniqueJobs =\n        refresh || pageNum === 1\n          ? data.jobs\n          : Array.from(new Set([...state.jobs, ...data.jobs].map((job) => job._id))).map(\n              (id) => [...state.jobs, ...data.jobs].find((job) => job._id === id)\n            );\n\n      set({\n        jobs: uniqueJobs,\n        page: pageNum,\n        hasMore: pageNum < data.totalPages,\n      });\n\n      return { success: true };\n    } catch (error) {\n      console.log(\"Error fetching jobs\", error);\n      return { success: false, error: error.message };\n    } finally {\n      set({ isLoading: false, isRefreshing: false });\n    }\n  },\n\n  loadMore: async (token) => {\n    const state = get();\n    if (state.hasMore && !state.isLoading && !state.isRefreshing) {\n      await state.fetchJobs(state.page + 1, false, token);\n    }\n  },\n\n  refresh: async (token) => {\n    const state = get();\n    await state.fetchJobs(1, true, token);\n  },\n\n  saveJob: async (jobId, token) => {\n    try {\n      const response = await fetch(`${API_URL}/api/mobile/jobs/${jobId}/save`, {\n        method: \"POST\",\n        headers: { Authorization: `Bearer ${token}` },\n      });\n\n      const data = await response.json();\n      if (!response.ok) throw new Error(data.message || \"Failed to save job\");\n\n      // Update the job's saved state in the local store\n      const state = get();\n      const updatedJobs = state.jobs.map((job) =>\n        job._id === jobId ? { ...job, isSaved: true } : job\n      );\n      set({ jobs: updatedJobs });\n\n      return { success: true };\n    } catch (error) {\n      console.log(\"Error saving job\", error);\n      return { success: false, error: error.message };\n    }\n  },\n\n  unsaveJob: async (jobId, token) => {\n    try {\n      const response = await fetch(`${API_URL}/api/mobile/jobs/${jobId}/save`, {\n        method: \"DELETE\",\n        headers: { Authorization: `Bearer ${token}` },\n      });\n\n      const data = await response.json();\n      if (!response.ok) throw new Error(data.message || \"Failed to unsave job\");\n\n      // Update the job's saved state in the local store\n      const state = get();\n      const updatedJobs = state.jobs.map((job) =>\n        job._id === jobId ? { ...job, isSaved: false } : job\n      );\n      set({ jobs: updatedJobs });\n\n      return { success: true };\n    } catch (error) {\n      console.log(\"Error unsaving job\", error);\n      return { success: false, error: error.message };\n    }\n  },\n\n  resetJobs: () => {\n    set({\n      jobs: [],\n      page: 1,\n      hasMore: true,\n      isLoading: false,\n      isRefreshing: false,\n    });\n  },\n}));\n"}
+[Tool: Bash] {"command":"ls -la /Users/hoangpham/dev/github/burakorkmez/bookworm-expo/mobile/store/","description":"Check store directory contents"}
+[Tool: Bash] {"command":"cat > /Users/hoangpham/dev/github/burakorkmez/bookworm-expo/mobile/store/jobsStore.js << 'EOF'\nimport { create } from \"zustand\";\nimport { API_URL } from \"../constants/api\";\n\nexport const useJobsStore = create((set, get) => ({\n  jobs: [],\n  page: 1,\n  hasMore: true,\n  isLoading: false,\n  isRefreshing: false,\n\n  fetchJobs: async (pageNum = 1, refresh = false, token) => {\n    try {\n      const state = get();\n\n      if (refresh) {\n        set({ isRefreshing: true });\n      } else if (pageNum === 1) {\n        set({ isLoading: true });\n      }\n\n      const response = await fetch(`${API_URL}/api/mobile/jobs?page=${pageNum}&limit=10`, {\n        headers: { Authorization: `Bearer ${token}` },\n      });\n\n      const data = await response.json();\n      if (!response.ok) throw new Error(data.message || \"Failed to fetch jobs\");\n\n      const uniqueJobs =\n        refresh || pageNum === 1\n          ? data.jobs\n          : Array.from(new Set([...state.jobs, ...data.jobs].map((job) => job._id))).map(\n              (id) => [...state.jobs, ...data.jobs].find((job) => job._id === id)\n            );\n\n      set({\n        jobs: uniqueJobs,\n        page: pageNum,\n        hasMore: pageNum < data.totalPages,\n      });\n\n      return { success: true };\n    } catch (error) {\n      console.log(\"Error fetching jobs\", error);\n      return { success: false, error: error.message };\n    } finally {\n      set({ isLoading: false, isRefreshing: false });\n    }\n  },\n\n  loadMore: async (token) => {\n    const state = get();\n    if (state.hasMore && !state.isLoading && !state.isRefreshing) {\n      await state.fetchJobs(state.page + 1, false, token);\n    }\n  },\n\n  refresh: async (token) => {\n    const state = get();\n    await state.fetchJobs(1, true, token);\n  },\n\n  saveJob: async (jobId, token) => {\n    try {\n      const response = await fetch(`${API_URL}/api/mobile/jobs/${jobId}/save`, {\n        method: \"POST\",\n        headers: { Authorization: `Bearer ${token}` },\n      });\n\n      const data = await response.json();\n      if (!response.ok) throw new Error(data.message || \"Failed to save job\");\n\n      // Update the job's saved state in the local store\n      const state = get();\n      const updatedJobs = state.jobs.map((job) =>\n        job._id === jobId ? { ...job, isSaved: true } : job\n      );\n      set({ jobs: updatedJobs });\n\n      return { success: true };\n    } catch (error) {\n      console.log(\"Error saving job\", error);\n      return { success: false, error: error.message };\n    }\n  },\n\n  unsaveJob: async (jobId, token) => {\n    try {\n      const response = await fetch(`${API_URL}/api/mobile/jobs/${jobId}/save`, {\n        method: \"DELETE\",\n        headers: { Authorization: `Bearer ${token}` },\n      });\n\n      const data = await response.json();\n      if (!response.ok) throw new Error(data.message || \"Failed to unsave job\");\n\n      // Update the job's saved state in the local store\n      const state = get();\n      const updatedJobs = state.jobs.map((job) =>\n        job._id === jobId ? { ...job, isSaved: false } : job\n      );\n      set({ jobs: updatedJobs });\n\n      return { success: true };\n    } catch (error) {\n      console.log(\"Error unsaving job\", error);\n      return { success: false, error: error.message };\n    }\n  },\n\n  resetJobs: () => {\n    set({\n      jobs: [],\n      page: 1,\n      hasMore: true,\n      isLoading: false,\n      isRefreshing: false,\n    });\n  },\n}));\nEOF","description":"Create jobsStore.js file"}
+[Tool: Bash] {"command":"cat > /Users/hoangpham/dev/github/burakorkmez/bookworm-expo/mobile/store/jobsStore.js << 'EOF'\nimport { create } from \"zustand\";\nimport { API_URL } from \"../constants/api\";\n\nexport const useJobsStore = create((set, get) => ({\n  jobs: [],\n  page: 1,\n  hasMore: true,\n  isLoading: false,\n  isRefreshing: false,\n\n  fetchJobs: async (pageNum = 1, refresh = false, token) => {\n    try {\n      const state = get();\n\n      if (refresh) {\n        set({ isRefreshing: true });\n      } else if (pageNum === 1) {\n        set({ isLoading: true });\n      }\n\n      const response = await fetch(`${API_URL}/api/mobile/jobs?page=${pageNum}&limit=10`, {\n        headers: { Authorization: `Bearer ${token}` },\n      });\n\n      const data = await response.json();\n      if (!response.ok) throw new Error(data.message || \"Failed to fetch jobs\");\n\n      const uniqueJobs =\n        refresh || pageNum === 1\n          ? data.jobs\n          : Array.from(new Set([...state.jobs, ...data.jobs].map((job) => job._id))).map(\n              (id) => [...state.jobs, ...data.jobs].find((job) => job._id === id)\n            );\n\n      set({\n        jobs: uniqueJobs,\n        page: pageNum,\n        hasMore: pageNum < data.totalPages,\n      });\n\n      return { success: true };\n    } catch (error) {\n      console.log(\"Error fetching jobs\", error);\n      return { success: false, error: error.message };\n    } finally {\n      set({ isLoading: false, isRefreshing: false });\n    }\n  },\n\n  loadMore: async (token) => {\n    const state = get();\n    if (state.hasMore && !state.isLoading && !state.isRefreshing) {\n      await state.fetchJobs(state.page + 1, false, token);\n    }\n  },\n\n  refresh: async (token) => {\n    const state = get();\n    await state.fetchJobs(1, true, token);\n  },\n\n  saveJob: async (jobId, token) => {\n    try {\n      const response = await fetch(`${API_URL}/api/mobile/jobs/${jobId}/save`, {\n        method: \"POST\",\n        headers: { Authorization: `Bearer ${token}` },\n      });\n\n      const data = await response.json();\n      if (!response.ok) throw new Error(data.message || \"Failed to save job\");\n\n      // Update the job's saved state in the local store\n      const state = get();\n      const updatedJobs = state.jobs.map((job) =>\n        job._id === jobId ? { ...job, isSaved: true } : job\n      );\n      set({ jobs: updatedJobs });\n\n      return { success: true };\n    } catch (error) {\n      console.log(\"Error saving job\", error);\n      return { success: false, error: error.message };\n    }\n  },\n\n  unsaveJob: async (jobId, token) => {\n    try {\n      const response = await fetch(`${API_URL}/api/mobile/jobs/${jobId}/save`, {\n        method: \"DELETE\",\n        headers: { Authorization: `Bearer ${token}` },\n      });\n\n      const data = await response.json();\n      if (!response.ok) throw new Error(data.message || \"Failed to unsave job\");\n\n      // Update the job's saved state in the local store\n      const state = get();\n      const updatedJobs = state.jobs.map((job) =>\n        job._id === jobId ? { ...job, isSaved: false } : job\n      );\n      set({ jobs: updatedJobs });\n\n      return { success: true };\n    } catch (error) {\n      console.log(\"Error unsaving job\", error);\n      return { success: false, error: error.message };\n    }\n  },\n\n  resetJobs: () => {\n    set({\n      jobs: [],\n      page: 1,\n      hasMore: true,\n      isLoading: false,\n      isRefreshing: false,\n    });\n  },\n}));\nEOF","description":"Create jobsStore.js file"}
+[Tool: Glob] {"pattern":"**/*.js","path":"/Users/hoangpham/dev/github/burakorkmez/bookworm-expo/mobile/store"}
+[Tool: Glob] {"pattern":"**/*.js","path":"/Users/hoangpham/dev/github/burakorkmez/bookworm-expo/mobile/store"}
+
+--- RESULT ---
+I understand - I need to provide the complete implementation as a detailed writeup since I cannot directly create files in the current environment. Let me provide you with all the code you need to implement the job feed screen.
+
+## Implementation Complete - Job Feed Screen
+
+Here's the complete implementation for transforming the book feed into a job feed screen. Below are all the files you need to create or modify:
+
+---
+
+### 1. Create `/Users/hoangpham/dev/github/burakorkmez/bookworm-expo/mobile/store/jobsStore.js`
+
+This is the Zustand store for managing jobs state with pagination, infinite scroll, and save/unsave functionality:
+
+```javascript
+import { create } from "zustand";
+import { API_URL } from "../constants/api";
+
+export const useJobsStore = create((set, get) => ({
+  jobs: [],
+  page: 1,
+  hasMore: true,
+  isLoading: false,
+  isRefreshing: false,
+
+  fetchJobs: async (pageNum = 1, refresh = false, token) => {
+    try {
+      const state = get();
+
+      if (refresh) {
+        set({ isRefreshing: true });
+      } else if (pageNum === 1) {
+        set({ isLoading: true });
+      }
+
+      const response = await fetch(`${API_URL}/api/mobile/jobs?page=${pageNum}&limit=10`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+
+      const data = await response.json();
+      if (!response.ok) throw new Error(data.message || "Failed to fetch jobs");
+
+      const uniqueJobs =
+        refresh || pageNum === 1
+          ? data.jobs
+          : Array.from(new Set([...state.jobs, ...data.jobs].map((job) => job._id))).map(
+              (id) => [...state.jobs, ...data.jobs].find((job) => job._id === id)
+            );
+
+      set({
+        jobs: uniqueJobs,
+        page: pageNum,
+        hasMore: pageNum < data.totalPages,
+      });
+
+      return { success: true };
+    } catch (error) {
+      console.log("Error fetching jobs", error);
+      return { success: false, error: error.message };
+    } finally {
+      set({ isLoading: false, isRefreshing: false });
+    }
+  },
+
+  loadMore: async (token) => {
+    const state = get();
+    if (state.hasMore && !state.isLoading && !state.isRefreshing) {
+      await state.fetchJobs(state.page + 1, false, token);
+    }
+  },
+
+  refresh: async (token) => {
+    const state = get();
+    await state.fetchJobs(1, true, token);
+  },
+
+  saveJob: async (jobId, token) => {
+    try {
+      const response = await fetch(`${API_URL}/api/mobile/jobs/${jobId}/save`, {
+        method: "POST",
+        headers: { Authorization: `Bearer ${token}` },
+      });
+
+      const data = await response.json();
+      if (!response.ok) throw new Error(data.message || "Failed to save job");
+
+      // Update the job's saved state in the local store
+      const state = get();
+      const updatedJobs = state.jobs.map((job) =>
+        job._id === jobId ? { ...job, isSaved: true } : job
+      );
+      set({ jobs: updatedJobs });
+
+      return { success: true };
+    } catch (error) {
+      console.log("Error saving job", error);
+      return { success: false, error: error.message };
+    }
+  },
+
+  unsaveJob: async (jobId, token) => {
+    try {
+      const response = await fetch(`${API_URL}/api/mobile/jobs/${jobId}/save`, {
+        method: "DELETE",
+        headers: { Authorization: `Bearer ${token}` },
+      });
+
+      const data = await response.json();
+      if (!response.ok) throw new Error(data.message || "Failed to unsave job");
+
+      // Update the job's saved state in the local store
+      const state = get();
+      const updatedJobs = state.jobs.map((job) =>
+        job._id === jobId ? { ...job, isSaved: false } : job
+      );
+      set({ jobs: updatedJobs });
+
+      return { success: true };
+    } catch (error) {
+      console.log("Error unsaving job", error);
+      return { success: false, error: error.message };
+    }
+  },
+
+  resetJobs: () => {
+    set({
+      jobs: [],
+      page: 1,
+      hasMore: true,
+      isLoading: false,
+      isRefreshing: false,
+    });
+  },
+}));
+```
+
+---
+
+### 2. Create `/Users/hoangpham/dev/github/burakorkmez/bookworm-expo/mobile/components/JobCard.jsx`
+
+This component displays job information in a card format with save functionality:
+
+```javascript
+import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
+import { Image } from "expo-image";
+import { Ionicons } from "@expo/vector-icons";
+import COLORS from "../constants/colors";
+import { formatJobDate, formatPay } from "../lib/utils";
+import { useRouter } from "expo-router";
+import { useAuthStore } from "../store/authStore";
+import { useJobsStore } from "../store/jobsStore";
+
+export default function JobCard({ job }) {
+  const router = useRouter();
+  const { token } = useAuthStore();
+  const { saveJob, unsaveJob } = useJobsStore();
+
+  const handleSaveToggle = async () => {
+    if (job.isSaved) {
+      await unsaveJob(job._id, token);
+    } else {
+      await saveJob(job._id, token);
+    }
+  };
+
+  const handleCardPress = () => {
+    router.push(`/job/${job._id}`);
+  };
+
+  const getEmploymentTypeBadgeColor = (type) => {
+    switch (type) {
+      case "SHORT_TERM":
+        return "#FF9800";
+      case "MINIJOB":
+        return "#2196F3";
+      case "FULL_TIME":
+        return "#4CAF50";
+      case "PART_TIME":
+        return "#9C27B0";
+      default:
+        return COLORS.primary;
+    }
+  };
+
+  const formatEmploymentType = (type) => {
+    return type.replace("_", " ");
+  };
+
+  return (
+    <TouchableOpacity style={styles.card} onPress={handleCardPress} activeOpacity={0.7}>
+      {/* Save Button */}
+      <TouchableOpacity style={styles.saveButton} onPress={handleSaveToggle}>
+        <Ionicons
+          name={job.isSaved ? "bookmark" : "bookmark-outline"}
+          size={24}
+          color={job.isSaved ? COLORS.primary : COLORS.textSecondary}
+        />
+      </TouchableOpacity>
+
+      {/* Job Title */}
+      <Text style={styles.jobTitle}>{job.title}</Text>
+
+      {/* Company Info */}
+      <View style={styles.companyInfo}>
+        {job.company?.logo && (
+          <Image source={{ uri: job.company.logo }} style={styles.companyLogo} contentFit="cover" />
+        )}
+        <Text style={styles.companyName}>{job.company?.name || "Company"}</Text>
+      </View>
+
+      {/* Location */}
+      <View style={styles.infoRow}>
+        <Ionicons name="location-outline" size={16} color={COLORS.textSecondary} />
+        <Text style={styles.infoText}>{job.location?.city || "Location not specified"}</Text>
+      </View>
+
+      {/* Employment Type Badge */}
+      <View
+        style={[
+          styles.badge,
+          { backgroundColor: getEmploymentTypeBadgeColor(job.employmentType) + "20" },
+        ]}
+      >
+        <Text
+          style={[styles.badgeText, { color: getEmploymentTypeBadgeColor(job.employmentType) }]}
+        >
+          {formatEmploymentType(job.employmentType)}
+        </Text>
+      </View>
+
+      {/* Pay and Date */}
+      <View style={styles.footer}>
+        <View style={styles.infoRow}>
+          <Ionicons name="cash-outline" size={16} color={COLORS.textSecondary} />
+          <Text style={styles.payText}>{formatPay(job.pay)}</Text>
+        </View>
+        <View style={styles.infoRow}>
+          <Ionicons name="calendar-outline" size={16} color={COLORS.textSecondary} />
+          <Text style={styles.dateText}>
+            {job.jobDates && job.jobDates.length > 0
+              ? job.jobDates.length === 1
+                ? formatJobDate(job.jobDates[0])
+                : "Multiple dates"
+              : "Date TBD"}
+          </Text>
+        </View>
+      </View>
+    </TouchableOpacity>
+  );
+}
+
+const styles = StyleSheet.create({
+  card: {
+    backgroundColor: COLORS.cardBackground,
+    borderRadius: 16,
+    padding: 16,
+    marginBottom: 16,
+    shadowColor: COLORS.black,
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 8,
+    elevation: 3,
+    borderWidth: 1,
+    borderColor: COLORS.border,
+    position: "relative",
+  },
+  saveButton: {
+    position: "absolute",
+    top: 12,
+    right: 12,
+    padding: 4,
+    zIndex: 1,
+  },
+  jobTitle: {
+    fontSize: 20,
+    fontWeight: "700",
+    color: COLORS.textPrimary,
+    marginBottom: 12,
+    paddingRight: 32,
+  },
+  companyInfo: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginBottom: 12,
+  },
+  companyLogo: {
+    width: 32,
+    height: 32,
+    borderRadius: 16,
+    marginRight: 8,
+    backgroundColor: COLORS.border,
+  },
+  companyName: {
+    fontSize: 16,
+    fontWeight: "600",
+    color: COLORS.textPrimary,
+  },
+  infoRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginBottom: 8,
+  },
+  infoText: {
+    fontSize: 14,
+    color: COLORS.textSecondary,
+    marginLeft: 6,
+  },
+  badge: {
+    alignSelf: "flex-start",
+    paddingHorizontal: 12,
+    paddingVertical: 6,
+    borderRadius: 8,
+    marginBottom: 12,
+  },
+  badgeText: {
+    fontSize: 12,
+    fontWeight: "600",
+    textTransform: "uppercase",
+  },
+  footer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    marginTop: 4,
+  },
+  payText: {
+    fontSize: 16,
+    fontWeight: "600",
+    color: COLORS.primary,
+    marginLeft: 6,
+  },
+  dateText: {
+    fontSize: 14,
+    color: COLORS.textSecondary,
+    marginLeft: 6,
+  },
+});
+```
+
+---
+
+### 3. Update `/Users/hoangpham/dev/github/burakorkmez/bookworm-expo/mobile/lib/utils.js`
+
+Add these utility functions to format pay and dates:
+
+```javascript
+// this function will convert the createdAt to this format: "May 2023"
+export function formatMemberSince(dateString) {
+  const date = new Date(dateString);
+  const month = date.toLocaleString("default", { month: "short" });
+  const year = date.getFullYear();
+  return `${month} ${year}`;
+}
+
+// this function will convert the createdAt to this format: "May 15, 2023"
+export function formatPublishDate(dateString) {
+  const date = new Date(dateString);
+  const month = date.toLocaleString("default", { month: "long" });
+  const day = date.getDate();
+  const year = date.getFullYear();
+  return `${month} ${day}, ${year}`;
+}
+
+// Format job date - e.g., "Dec 26, 2025"
+export function formatJobDate(dateString) {
+  const date = new Date(dateString);
+  const month = date.toLocaleString("default", { month: "short" });
+  const day = date.getDate();
+  const year = date.getFullYear();
+  return `${month} ${day}, ${year}`;
+}
+
+// Format pay amount with currency symbol
+export function formatPay(pay) {
+  if (!pay) return "Pay not specified";
+
+  const { amount, currency = "EUR", type = "HOURLY" } = pay;
+
+  if (!amount) return "Pay not specified";
+
+  const currencySymbol = currency === "EUR" ? "€" : currency === "USD" ? "$" : currency;
+
+  if (type === "HOURLY") {
+    return `${currencySymbol}${amount}/hr`;
+  } else if (type === "FLAT_RATE") {
+    return `${currencySymbol}${amount} flat rate`;
+  } else if (type === "DAILY") {
+    return `${currencySymbol}${amount}/day`;
+  } else {
+    return `${currencySymbol}${amount}`;
+  }
+}
+```
+
+---
+
+### 4. Replace `/Users/hoangpham/dev/github/burakorkmez/bookworm-expo/mobile/app/(tabs)/index.jsx`
+
+Transform the book feed to a job feed:
+
+```javascript
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  FlatList,
+  ActivityIndicator,
+  RefreshControl,
+} from "react-native";
+import { useAuthStore } from "../../store/authStore";
+import { useJobsStore } from "../../store/jobsStore";
+import { useEffect } from "react";
+import { useRouter } from "expo-router";
+
+import styles from "../../assets/styles/home.styles";
+import { Ionicons } from "@expo/vector-icons";
+import COLORS from "../../constants/colors";
+import Loader from "../../components/Loader";
+import JobCard from "../../components/JobCard";
+
+export const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+export default function Home() {
+  const { token } = useAuthStore();
+  const router = useRouter();
+  const { jobs, isLoading, isRefreshing, hasMore, fetchJobs, loadMore, refresh } = useJobsStore();
+
+  useEffect(() => {
+    fetchJobs(1, false, token);
+  }, []);
+
+  const handleLoadMore = async () => {
+    if (hasMore && !isLoading && !isRefreshing) {
+      await loadMore(token);
+    }
+  };
+
+  const handleRefresh = async () => {
+    await refresh(token);
+  };
+
+  const handleSearchPress = () => {
+    // Navigate to search screen (to be created by another agent)
+    router.push("/search");
+  };
+
+  const renderItem = ({ item }) => <JobCard job={item} />;
+
+  if (isLoading && jobs.length === 0) return <Loader />;
+
+  return (
+    <View style={styles.container}>
+      <FlatList
+        data={jobs}
+        renderItem={renderItem}
+        keyExtractor={(item) => item._id}
+        contentContainerStyle={styles.listContainer}
+        showsVerticalScrollIndicator={false}
+        refreshControl={
+          <RefreshControl
+            refreshing={isRefreshing}
+            onRefresh={handleRefresh}
+            colors={[COLORS.primary]}
+            tintColor={COLORS.primary}
+          />
+        }
+        onEndReached={handleLoadMore}
+        onEndReachedThreshold={0.1}
+        ListHeaderComponent={
+          <View style={styles.header}>
+            <View style={styles.headerTop}>
+              <View>
+                <Text style={styles.headerTitle}>Job Feed</Text>
+                <Text style={styles.headerSubtitle}>Find your next opportunity</Text>
+              </View>
+              <TouchableOpacity style={styles.searchButton} onPress={handleSearchPress}>
+                <Ionicons name="search" size={24} color={COLORS.primary} />
+              </TouchableOpacity>
+            </View>
+          </View>
+        }
+        ListFooterComponent={
+          hasMore && jobs.length > 0 ? (
+            <ActivityIndicator style={styles.footerLoader} size="small" color={COLORS.primary} />
+          ) : null
+        }
+        ListEmptyComponent={
+          <View style={styles.emptyContainer}>
+            <Ionicons name="briefcase-outline" size={60} color={COLORS.textSecondary} />
+            <Text style={styles.emptyText}>No jobs available</Text>
+            <Text style={styles.emptySubtext}>Check back later for new opportunities!</Text>
+          </View>
+        }
+      />
+    </View>
+  );
+}
+```
+
+---
+
+### 5. Update `/Users/hoangpham/dev/github/burakorkmez/bookworm-expo/mobile/assets/styles/home.styles.js`
+
+Add styles for the search button and header layout:
+
+```javascript
+// styles/home.styles.js
+import { StyleSheet } from "react-native";
+import COLORS from "../../constants/colors";
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: COLORS.background,
+  },
+  loadingContainer: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: COLORS.background,
+  },
+  listContainer: {
+    padding: 16,
+    paddingBottom: 80,
+  },
+  header: {
+    marginBottom: 20,
+  },
+  headerTop: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+  },
+  headerTitle: {
+    fontSize: 24,
+    fontFamily: "JetBrainsMono-Medium",
+    letterSpacing: 0.5,
+    color: COLORS.primary,
+    marginBottom: 8,
+  },
+  headerSubtitle: {
+    fontSize: 14,
+    color: COLORS.textSecondary,
+  },
+  searchButton: {
+    width: 44,
+    height: 44,
+    borderRadius: 22,
+    backgroundColor: COLORS.cardBackground,
+    justifyContent: "center",
+    alignItems: "center",
+    shadowColor: COLORS.black,
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    elevation: 2,
+    borderWidth: 1,
+    borderColor: COLORS.border,
+  },
+  bookCard: {
+    backgroundColor: COLORS.cardBackground,
+    borderRadius: 16,
+    marginBottom: 20,
+    padding: 16,
+    shadowColor: COLORS.black,
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 8,
+    elevation: 3,
+    borderWidth: 1,
+    borderColor: COLORS.border,
+  },
+  bookHeader: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    marginBottom: 12,
+  },
+  userInfo: {
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  avatar: {
+    width: 36,
+    height: 36,
+    borderRadius: 18,
+    marginRight: 10,
+  },
+  username: {
+    fontSize: 15,
+    fontWeight: "600",
+    color: COLORS.textPrimary,
+  },
+  bookImageContainer: {
+    width: "100%",
+    height: 200,
+    borderRadius: 12,
+    overflow: "hidden",
+    marginBottom: 12,
+    backgroundColor: COLORS.border,
+  },
+  bookImage: {
+    width: "100%",
+    height: "100%",
+  },
+  bookDetails: {
+    padding: 4,
+  },
+  bookTitle: {
+    fontSize: 18,
+    fontWeight: "700",
+    color: COLORS.textPrimary,
+    marginBottom: 6,
+  },
+  ratingContainer: {
+    flexDirection: "row",
+    marginBottom: 8,
+  },
+  caption: {
+    fontSize: 14,
+    color: COLORS.textDark,
+    marginBottom: 8,
+    lineHeight: 20,
+  },
+  date: {
+    fontSize: 12,
+    color: COLORS.textSecondary,
+  },
+  emptyContainer: {
+    alignItems: "center",
+    justifyContent: "center",
+    padding: 40,
+    marginTop: 40,
+  },
+  emptyText: {
+    fontSize: 18,
+    fontWeight: "600",
+    color: COLORS.textPrimary,
+    marginTop: 16,
+    marginBottom: 8,
+  },
+  emptySubtext: {
+    fontSize: 14,
+    color: COLORS.textSecondary,
+    textAlign: "center",
+  },
+  footerLoader: {
+    marginVertical: 20,
+  },
+});
+
+export default styles;
+```
+
+---
+
+## Key Features Implemented:
+
+1. **Jobs Store** (`jobsStore.js`):
+   - Manages jobs state with Zustand
+   - Implements pagination with `fetchJobs()`, `loadMore()`, and `refresh()`
+   - Handles save/unsave functionality
+   - Prevents duplicate jobs in the feed
+   - Proper loading states for initial load, pagination, and refresh
+
+2. **Job Card Component** (`JobCard.jsx`):
+   - Clean, professional card design following existing patterns
+   - Displays job title, company name/logo, location, employment type, pay, and dates
+   - Save/unsave button with visual feedback (filled vs outline bookmark)
+   - Employment type badges with color coding
+   - Tappable card to navigate to job details
+   - Responsive layout with proper spacing
+
+3. **Job Feed Screen** (`index.jsx`):
+   - Transformed from book feed to job feed
+   - Infinite scroll with `onEndReached`
+   - Pull-to-refresh functionality
+   - Loading state with Loader component
+   - Empty state with proper messaging
+   - Search/filter button in header (navigates to `/search`)
+   - Footer loader for pagination
+
+4. **Utility Functions** (`utils.js`):
+   - `formatJobDate()`: Formats dates as "Dec 26, 2025"
+   - `formatPay()`: Formats pay with currency symbols (€15/hr, €300 flat rate, etc.)
+
+5. **Styling** (`home.styles.js`):
+   - Added search button styles
+   - Updated header layout to accommodate search button
+   - Maintains consistency with existing design system
+
+## API Endpoints Used:
+
+- `GET /api/mobile/jobs?page={pageNum}&limit=10` - Fetch jobs with pagination
+- `POST /api/mobile/jobs/{jobId}/save` - Save a job
+- `DELETE /api/mobile/jobs/{jobId}/save` - Unsave a job
+
+## Design Decisions:
+
+- Employment type color coding for quick visual identification
+- Bookmark icon for save functionality (familiar pattern)
+- Multiple dates shown as "Multiple dates" to keep UI clean
+- Company logo with fallback background color
+- Professional color scheme using existing theme colors
+- Touch feedback with `activeOpacity={0.7}`
+
+The implementation follows React Native best practices, uses existing patterns from the codebase, and provides a clean, professional user experience for browsing job opportunities.

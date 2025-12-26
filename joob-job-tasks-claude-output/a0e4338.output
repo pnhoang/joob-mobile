@@ -1,0 +1,690 @@
+[Tool: Bash] {"command":"ls -la /Users/hoangpham/dev/joob/","description":"List root directory contents"}
+[Tool: Glob] {"pattern":"**/package.json","path":"/Users/hoangpham/dev/joob"}
+[Tool: Glob] {"pattern":"**/README.md","path":"/Users/hoangpham/dev/joob"}
+[Tool: Glob] {"pattern":"**/*.env*","path":"/Users/hoangpham/dev/joob"}
+[Tool: Glob] {"pattern":"**/*.env*","path":"/Users/hoangpham/dev/joob"}
+[Tool: Read] {"file_path":"/Users/hoangpham/dev/joob/package.json"}
+[Tool: Read] {"file_path":"/Users/hoangpham/dev/joob/README.md"}
+[Tool: Bash] {"command":"ls -la /Users/hoangpham/dev/joob/app","description":"List app directory contents"}
+[Tool: Bash] {"command":"ls -la /Users/hoangpham/dev/joob/prisma","description":"List prisma directory contents"}
+[Tool: Bash] {"command":"ls -la /Users/hoangpham/dev/joob/prisma","description":"List prisma directory contents"}
+[Tool: Read] {"file_path":"/Users/hoangpham/dev/joob/prisma/schema.prisma"}
+[Tool: Bash] {"command":"ls -la /Users/hoangpham/dev/joob/app/api","description":"List API directory contents"}
+[Tool: Glob] {"pattern":"**/route.ts","path":"/Users/hoangpham/dev/joob/app/api"}
+[Tool: Glob] {"pattern":"**/route.ts","path":"/Users/hoangpham/dev/joob/app/api"}
+[Tool: Read] {"file_path":"/Users/hoangpham/dev/joob/app/actions.ts"}
+[Tool: Read] {"file_path":"/Users/hoangpham/dev/joob/app/api/applications/route.ts"}
+[Tool: Bash] {"command":"ls -la /Users/hoangpham/dev/joob/app/actions","description":"List actions directory contents"}
+[Tool: Read] {"file_path":"/Users/hoangpham/dev/joob/app/api/auth/register/route.ts"}
+[Tool: Read] {"file_path":"/Users/hoangpham/dev/joob/app/api/auth/register/route.ts"}
+[Tool: Bash] {"command":"find /Users/hoangpham/dev/joob/app -name \"auth.ts\" -o -name \"auth.js\" | head -5","description":"Find auth configuration files"}
+[Tool: Read] {"file_path":"/Users/hoangpham/dev/joob/app/api/auth/[...nextauth]/route.ts"}
+[Tool: Glob] {"pattern":"**/auth.ts","path":"/Users/hoangpham/dev/joob/app/utils"}
+[Tool: Bash] {"command":"ls -la /Users/hoangpham/dev/joob/app/utils","description":"List utils directory"}
+[Tool: Read] {"file_path":"/Users/hoangpham/dev/joob/app/utils/auth.ts"}
+[Tool: Read] {"file_path":"/Users/hoangpham/dev/joob/app/utils/zodSchemas.ts"}
+[Tool: Bash] {"command":"ls -la /Users/hoangpham/dev/joob/app/\\(mainLayout\\)","description":"List mainLayout directory"}
+[Tool: Bash] {"command":"ls -la /Users/hoangpham/dev/joob/app/\\[lang\\]","description":"List lang directory"}
+[Tool: Glob] {"pattern":"**/page.tsx","path":"/Users/hoangpham/dev/joob/app/(mainLayout)"}
+[Tool: Read] {"file_path":"/Users/hoangpham/dev/joob/app/utils/constants.ts"}
+[Tool: Read] {"file_path":"/Users/hoangpham/dev/joob/app/actions/selection-actions.ts"}
+[Tool: Bash] {"command":"find /Users/hoangpham/dev/joob/app -type f -name \"*.ts\" -o -name \"*.tsx\" | grep -E \"(api|route)\" | head -20","description":"Find more API route files"}
+[Tool: Bash] {"command":"find /Users/hoangpham/dev/joob/app -type f -name \"*.ts\" -o -name \"*.tsx\" | grep -E \"(api|route)\" | head -20","description":"Find more API route files"}
+[Tool: Read] {"file_path":"/Users/hoangpham/dev/joob/app/(mainLayout)/page.tsx"}
+[Tool: Read] {"file_path":"/Users/hoangpham/dev/joob/app/(mainLayout)/job/[jobTitleSlug]/page.tsx"}
+[Tool: Read] {"file_path":"/Users/hoangpham/dev/joob/app/api/user/profile/route.ts"}
+[Tool: Grep] {"pattern":"export.*GET|export.*POST|export.*PUT|export.*DELETE|export.*PATCH","path":"/Users/hoangpham/dev/joob/app/api","output_mode":"content"}
+[Tool: Grep] {"pattern":"export.*GET|export.*POST|export.*PUT|export.*DELETE|export.*PATCH","path":"/Users/hoangpham/dev/joob/app/api","output_mode":"content"}
+[Tool: Read] {"file_path":"/Users/hoangpham/dev/joob/app/api/inngest/functions.ts"}
+[Tool: Grep] {"pattern":"findMany|findFirst|findUnique","path":"/Users/hoangpham/dev/joob/app/(mainLayout)","glob":"*.tsx","output_mode":"files_with_matches"}
+[Tool: Read] {"file_path":"/Users/hoangpham/dev/joob/app/api/webhook/stripe/route.ts"}
+[Tool: Glob] {"pattern":"**/*search*.tsx","path":"/Users/hoangpham/dev/joob/components"}
+[Tool: Glob] {"pattern":"**/*search*.tsx","path":"/Users/hoangpham/dev/joob/components"}
+[Tool: Glob] {"pattern":"**/*Job*.tsx","path":"/Users/hoangpham/dev/joob/components"}
+[Tool: Read] {"file_path":"/Users/hoangpham/dev/joob/app/(mainLayout)/dashboard/page.tsx"}
+[Tool: Read] {"file_path":"/Users/hoangpham/dev/joob/app/(mainLayout)/my-applications/page.tsx"}
+[Tool: Bash] {"command":"find /Users/hoangpham/dev/joob -name \"*.env*\" -type f 2>/dev/null | grep -v node_modules | head -5","description":"Find environment files"}
+[Tool: Bash] {"command":"find /Users/hoangpham/dev/joob -name \"*.env*\" -type f 2>/dev/null | grep -v node_modules | head -5","description":"Find environment files"}
+[Tool: Read] {"file_path":"/Users/hoangpham/dev/joob/components/general/JobHeroSearch.tsx"}
+[Tool: Read] {"file_path":"/Users/hoangpham/dev/joob/app/(mainLayout)/jobber/dashboard/page.tsx"}
+[Tool: Bash] {"command":"head -30 /Users/hoangpham/dev/joob/.env.local","description":"View environment variables structure"}
+[Tool: Bash] {"command":"head -30 /Users/hoangpham/dev/joob/.env.local","description":"View environment variables structure"}
+
+--- RESULT ---
+Perfect! Now I have a comprehensive understanding of the joob backend. Let me compile this comprehensive report:
+
+## Joob Backend Platform Analysis
+
+Based on my thorough exploration of the codebase at `/Users/hoangpham/dev/joob/`, here's a complete overview:
+
+---
+
+### 1. PLATFORM OVERVIEW
+
+**Joob** is a job marketplace platform specifically designed for short-term job opportunities in Germany (focus on "Jobbers" - temporary workers). The platform connects:
+- **Employers** (Companies & Private Persons) who need temporary workers
+- **Job Seekers** ("Jobbers") who are looking for short-term gig work
+
+**Key Characteristics:**
+- German-language platform (internationalization with next-intl)
+- Focus on short-term employment (SHORT_TERM, MINIJOB, SELF_EMPLOYED)
+- Payment-based model for job postings
+- Identity verification for job seekers
+- Email/WhatsApp notifications for job postings
+
+---
+
+### 2. BACKEND TECH STACK
+
+**Framework & Runtime:**
+- **Next.js 15.3.0** (App Router with React 19)
+- **Node.js** with TypeScript
+- Modern server-side rendering and API routes
+
+**Database & ORM:**
+- **PostgreSQL** (via Neon serverless)
+- **Prisma 6.2.1** (ORM for database operations)
+- Connection string: `postgresql://neondb_owner:...@ep-winter-tree-a2a6e8py-pooler.eu-central-1.aws.neon.tech/neondb`
+
+**Authentication:**
+- **NextAuth.js v5.0.0-beta.30** (Auth.js)
+- Session strategy: JWT (for credentials) + Database sessions (for OAuth)
+- Prisma Adapter for session management
+
+**Payment Processing:**
+- **Stripe** (v17.5.0)
+- Webhook handling for payment events
+- Checkout sessions for job listing fees
+
+**Background Jobs & Emails:**
+- **Inngest** (v3.30.0) - Background job processing
+- **AWS SES** (Simple Email Service) - Email notifications
+- Scheduled tasks for job expiration, application notifications
+
+**File Upload:**
+- **UploadThing** (v7.4.4) - File upload service for CVs, photos, documents
+
+**Security:**
+- **Arcjet** (v1.0.0-beta.1) - Bot detection, rate limiting, security
+- **bcryptjs** - Password hashing
+
+**Validation:**
+- **Zod** (v3.24.1) - Schema validation
+
+**Monitoring:**
+- **Sentry** (v10.25.0) - Error tracking and monitoring
+
+---
+
+### 3. API ENDPOINTS
+
+#### **Authentication Endpoints** (`/app/api/auth/`)
+
+**Core Auth:**
+- `GET/POST /api/auth/[...nextauth]` - NextAuth.js handler (login/logout)
+- `POST /api/auth/register` - User registration with email/password
+- `POST /api/auth/verify` - Email verification
+- `POST /api/auth/resend-verification` - Resend verification email
+- `POST /api/auth/forgot-password` - Password reset request
+- `POST /api/auth/reset-password` - Complete password reset
+- `GET /api/auth/user-status` - Check user authentication status
+
+**Auth Providers:**
+- Email/Password (Credentials provider)
+- Google OAuth
+
+#### **Job Application Endpoints** (`/app/api/applications/`)
+
+- `GET /api/applications?jobId={jobId}` - Get applications for company's jobs
+  - Requires: COMPANY user type
+  - Returns: List of applications with applicant details
+  
+- `PATCH /api/applications` - Update application status
+  - Body: `{ applicationId: string, status: ApplicationStatus }`
+  - Requires: COMPANY user type
+
+#### **User Profile Endpoints** (`/app/api/user/`)
+
+- `GET /api/user/profile` - Get current user's profile
+  - Returns: User info + JobSeeker or Company data based on userType
+
+#### **Payment Endpoints** (`/app/api/webhook/`)
+
+- `POST /api/webhook/stripe` - Stripe webhook handler
+  - Handles `checkout.session.completed` events
+  - Updates job post status to CLOSED on successful payment
+
+#### **File Upload** (`/app/api/uploadthing/`)
+
+- `GET/POST /api/uploadthing` - UploadThing route handler
+  - Handles file uploads for CVs, photos, documents
+
+#### **Background Jobs** (`/app/api/inngest/`)
+
+- `GET/POST/PUT /api/inngest` - Inngest webhook handler
+  - Processes background job events
+
+---
+
+### 4. SERVER ACTIONS (Main Business Logic)
+
+All defined in `/app/actions.ts`:
+
+#### **Company Actions:**
+- `createCompany(data)` - Create company profile during onboarding
+- `createPrivatePersonCompany(data)` - Create private person profile
+- `updateCompanyProfile(data)` - Update company information
+
+#### **Job Seeker Actions:**
+- `createJobSeeker(data)` - Create job seeker profile during onboarding
+- `updateJobSeekerProfile(data)` - Update job seeker information
+
+#### **Job Posting Actions:**
+- `createJob(data)` - Create new job post (status: ACTIVE)
+  - Calculates listing fee based on pay type (HOURLY/FLATRATE)
+  - Sends Inngest event for notifications
+  - Fee calculation: `max(10, duration * pay * 0.2) * personCount * 1.19 (VAT)`
+  
+- `editJobPost(data, jobId)` - Update existing job post
+- `deleteJobPost(jobTitleSlug)` - Delete job post
+- `createStripeCheckoutSessionForJobListingFee(jobTitleSlug)` - Initiate payment
+
+#### **Job Application Actions:**
+- `submitJobApplication(data)` - Submit job application
+  - Allows both authenticated and non-authenticated users
+  - Requires JobSeeker profile
+  - Sends notification emails via Inngest
+  
+- `updateApplicationStatus(applicationId, status)` - Change application status
+- `getJobApplications(jobId)` - Get all applications for a job
+
+#### **Saved Jobs:**
+- `saveJobPost(jobId)` - Save job for later
+- `unSaveJobPost(savedJobPostId)` - Remove saved job
+
+#### **User Profile:**
+- `updateProfileImage(imageUrl)` - Update user avatar
+- `updateUserProfile(data)` - Update user basic info
+
+#### **Admin Actions:**
+- `getDetailedUserInfo(userId)` - View user details (admin only)
+- `updateUserByAdmin(userId, data)` - Update user info (admin only)
+- `updateJobSeekerByAdmin(jobSeekerId, data)` - Update job seeker (admin only)
+- `updateCompanyByAdmin(companyId, data)` - Update company (admin only)
+- `sendEmployerSelectionEmailAction(job)` - Send selected candidates to employer
+
+---
+
+### 5. DATA MODEL / SCHEMA
+
+#### **User Model**
+```typescript
+User {
+  id: String (cuid)
+  email: String (unique)
+  name: String?
+  firstName: String?
+  lastName: String?
+  dateOfBirth: DateTime?
+  password: String? // For email/password auth
+  image: String?
+  emailVerified: DateTime?
+  mobileNumber: String? (unique)
+  stripeCustomerId: String? (unique)
+  
+  userType: UserType (USER | COMPANY | JOB_SEEKER | ADMIN)
+  onboardingCompleted: Boolean (default: false)
+  
+  // Relations
+  Company: Company?
+  JobSeeker: JobSeeker?
+  SavedJobPost: SavedJobPost[]
+  JobApplications: JobApplication[]
+  accounts: Account[]
+  sessions: Session[]
+}
+```
+
+#### **Company Model**
+```typescript
+Company {
+  id: String (uuid)
+  name: String
+  slug: String (unique) // SEO-friendly URL
+  location: String
+  address: String
+  city: String?
+  latitude: Float?
+  longitude: Float?
+  about: String
+  logo: String?
+  email: String?
+  taxNumber: String?
+  
+  companyType: CompanyType (PRIVATE_PERSON | COMPANY)
+  
+  // Profile contact info
+  profileFirstName: String?
+  profileLastName: String?
+  profileEmail: String?
+  profileRole: String?
+  profileDateOfBirth: DateTime?
+  profilePhoneNumber: String?
+  
+  // Social media
+  website: String?
+  instagramAccount: String?
+  facebookAccount: String?
+  tiktokAccount: String?
+  linkedInAccount: String?
+  xAccount: String?
+  
+  // Relations
+  JobPost: JobPost[]
+  user: User
+  userId: String (unique)
+}
+```
+
+#### **JobSeeker Model**
+```typescript
+JobSeeker {
+  id: String (uuid)
+  email: String
+  about: String
+  resume: String? // URL to resume file
+  dateOfBirth: DateTime?
+  
+  // Identity verification (required)
+  address: String
+  nationality: String
+  identityVerification: String // URL to ID document
+  selfiePhoto: String // URL to selfie
+  
+  jobSeekerAccountApproved: Boolean? (default: false)
+  hasDriverLicense: Boolean? (default: false)
+  
+  // Skills and attributes
+  skills: String[] // Array of skills
+  traits: String[] // Array of traits
+  languages: String[] // Array of languages
+  
+  // Relations
+  user: User
+  userId: String (unique)
+}
+```
+
+#### **JobPost Model**
+```typescript
+JobPost {
+  id: String (uuid)
+  jobTitle: String
+  jobTitleSlug: String (unique) // SEO-friendly URL
+  employmentType: EmployType (SHORT_TERM | MINIJOB | SELF_EMPLOYED | ANDERE)
+  
+  // Location
+  location: String // Country
+  city: String
+  district: String // City district
+  address: String
+  postalCode: String
+  
+  // Dates and times
+  jobDates: JobDate[] // New structured format
+  dates: DateTime[] // Legacy field
+  startTime: String? // Legacy field
+  endTime: String? // Legacy field
+  dateTimesDescription: String?
+  
+  // Compensation
+  pay: Float?
+  payType: PayType? (HOURLY | FLATRATE)
+  jobDuration: Int? // Hours
+  payDescription: String?
+  
+  jobListingFee: Float // Fee charged to employer
+  
+  jobDescription: String // Rich text (JSON)
+  listingDuration: Int? // Days
+  deadline: DateTime?
+  personCount: Int? // Total workers needed
+  
+  status: JobPostStatus (DRAFT | ACTIVE | UNDER_REVIEW | AWAITING_PAYMENT | 
+                         PAYMENT_DECLINED | WITHDRAWN | CLOSED | EXPIRED)
+  
+  // Relations
+  Company: Company
+  companyId: String
+  SavedJobPost: SavedJobPost[]
+  JobApplications: JobApplication[]
+}
+```
+
+#### **JobDate Model** (New structured dates)
+```typescript
+JobDate {
+  id: String (uuid)
+  date: DateTime
+  startTime: String?
+  endTime: String?
+  personCount: Int? // Workers needed for this specific date
+  
+  jobPost: JobPost
+  jobPostId: String
+}
+```
+
+#### **JobApplication Model**
+```typescript
+JobApplication {
+  id: String (uuid)
+  firstName: String
+  lastName: String
+  email: String
+  cvUrl: String?
+  coverLetterUrl: String?
+  termsAccepted: Boolean (default: false)
+  
+  status: ApplicationStatus (PENDING | REVIEWED | SHORTLISTED | 
+                            REJECTED | INTERVIEW_SCHEDULED | HIRED)
+  
+  // Relations
+  JobPost: JobPost
+  jobPostId: String
+  User: User? // Optional - can apply without login
+  userId: String?
+}
+```
+
+#### **SavedJobPost Model**
+```typescript
+SavedJobPost {
+  id: String (uuid)
+  JobPost: JobPost
+  jobPostId: String
+  User: User
+  userId: String
+  
+  @@unique([userId, jobPostId])
+}
+```
+
+---
+
+### 6. AUTHENTICATION MECHANISM
+
+**NextAuth.js v5 (Auth.js) Implementation:**
+
+**Providers:**
+1. **Google OAuth** - Social login
+2. **Credentials Provider** - Email/password authentication
+
+**Session Management:**
+- **JWT Strategy** for credentials provider
+- **Database Sessions** for OAuth providers (via Prisma Adapter)
+
+**Authentication Flow:**
+
+**Registration:**
+1. User submits registration form (`POST /api/auth/register`)
+2. Password is hashed with bcryptjs
+3. User created in database with `emailVerified: null`
+4. Verification email sent via AWS SES
+5. User clicks verification link (`POST /api/auth/verify`)
+6. `emailVerified` timestamp updated
+
+**Login:**
+1. User submits credentials to NextAuth
+2. `authorize()` callback verifies password with bcrypt
+3. JWT token created with user ID
+4. Session cookie set
+
+**Password Reset:**
+1. User requests reset (`POST /api/auth/forgot-password`)
+2. Reset token generated and stored in `VerificationToken` table
+3. Email with reset link sent
+4. User submits new password (`POST /api/auth/reset-password`)
+5. Password updated in database
+
+**Authorization Helpers:**
+- `requireUser()` - Server action helper to ensure authentication
+- `isAdmin(userId)` - Check if user has ADMIN role
+- Session includes user ID via custom callbacks
+
+**Email Verification:**
+- Optional for login (currently disabled to allow unverified users)
+- Verification tokens stored in database
+- Resend verification available
+
+---
+
+### 7. MOBILE API READINESS
+
+**Current State: WEB-FOCUSED, NOT MOBILE-OPTIMIZED**
+
+The backend is **primarily designed for web** with Next.js Server Components and Server Actions. However, it can be adapted for mobile:
+
+**Web-Specific Patterns:**
+- Heavy use of Server Actions (RSC pattern)
+- Server-side rendering with Next.js
+- Form actions with `redirect()` calls
+
+**Mobile API Considerations:**
+
+**✅ What Works for Mobile:**
+- REST API endpoints in `/app/api/*` can be called from mobile
+- Authentication via NextAuth.js endpoints
+- JSON responses available from API routes
+- Standard HTTP methods (GET, POST, PATCH, DELETE)
+
+**❌ What Doesn't Work for Mobile:**
+- Server Actions cannot be called directly from native mobile apps
+- Server Actions use Next.js-specific protocols
+- Many operations are implemented as Server Actions, not REST APIs
+
+**For Mobile Development, You Would Need:**
+
+1. **Convert Server Actions to REST API Endpoints:**
+   ```
+   Server Action: createJob(data)
+   → Should become: POST /api/jobs
+   
+   Server Action: submitJobApplication(data)
+   → Should become: POST /api/jobs/:jobId/applications
+   
+   Server Action: getJobApplications(jobId)
+   → Already has: GET /api/applications?jobId=xxx
+   ```
+
+2. **Add Missing REST Endpoints:**
+   - `GET /api/jobs` - List jobs with search/filter
+   - `GET /api/jobs/:id` - Get job details
+   - `POST /api/jobs` - Create job (currently Server Action)
+   - `PATCH /api/jobs/:id` - Update job (currently Server Action)
+   - `DELETE /api/jobs/:id` - Delete job (currently Server Action)
+   - `GET /api/companies/:id` - Get company profile
+   - `PATCH /api/profile` - Update user profile (currently Server Action)
+
+3. **Authentication for Mobile:**
+   - NextAuth.js works but requires special handling
+   - Better: Implement JWT token-based auth with refresh tokens
+   - Or use NextAuth.js session tokens via cookies
+
+4. **File Uploads:**
+   - UploadThing already provides REST API
+   - Works with mobile apps
+
+**Current Mobile-Ready APIs:**
+- ✅ `GET /api/user/profile` - Get user profile
+- ✅ `GET /api/applications` - Get job applications
+- ✅ `PATCH /api/applications` - Update application status
+- ✅ `POST /api/auth/register` - User registration
+- ✅ `POST /api/auth/verify` - Email verification
+- ✅ `GET/POST /api/auth/[...nextauth]` - Authentication
+
+**Missing for Full Mobile Support:**
+- ❌ Job CRUD operations (only Server Actions)
+- ❌ Job search/filtering API
+- ❌ Profile update APIs
+- ❌ Saved jobs API
+- ❌ Company profile APIs
+
+---
+
+### 8. BACKEND ARCHITECTURE
+
+**Architecture Pattern: Next.js App Router with Server-Side Logic**
+
+```
+┌─────────────────────────────────────────────────────────┐
+│                   Next.js Frontend                      │
+│         (React 19 + Server Components)                  │
+└────────────────────┬────────────────────────────────────┘
+                     │
+     ┌───────────────┼───────────────┐
+     │               │               │
+     ▼               ▼               ▼
+┌─────────┐   ┌──────────┐   ┌──────────┐
+│  Pages  │   │   API    │   │  Server  │
+│ (SSR)   │   │  Routes  │   │ Actions  │
+└────┬────┘   └────┬─────┘   └────┬─────┘
+     │             │              │
+     │             │              │
+     └─────────────┴──────────────┘
+                   │
+                   ▼
+     ┌─────────────────────────────┐
+     │   Prisma ORM (Database)     │
+     │   PostgreSQL (Neon)         │
+     └─────────────────────────────┘
+                   │
+         ┌─────────┴─────────┐
+         │                   │
+         ▼                   ▼
+   ┌──────────┐      ┌─────────────┐
+   │ NextAuth │      │   External  │
+   │   JWT    │      │  Services   │
+   └──────────┘      └──────┬──────┘
+                             │
+             ┌───────────────┼───────────────┐
+             │               │               │
+             ▼               ▼               ▼
+      ┌───────────┐   ┌──────────┐   ┌──────────┐
+      │  Stripe   │   │  Inngest │   │ AWS SES  │
+      │ Payments  │   │   Jobs   │   │  Email   │
+      └───────────┘   └──────────┘   └──────────┘
+                             │
+                             ▼
+                   ┌──────────────────┐
+                   │  WhatsApp Bridge │
+                   │   (Go Service)   │
+                   └──────────────────┘
+```
+
+**Key Architectural Decisions:**
+
+1. **Monolithic Next.js Application**
+   - Frontend and backend in single codebase
+   - Server-side rendering for SEO
+   - API routes for REST endpoints
+   - Server Actions for form handling
+
+2. **Database Access Pattern**
+   - Direct Prisma queries from Server Components
+   - No separate backend service layer
+   - Database connection pooling via Neon
+
+3. **Authentication Architecture**
+   - JWT tokens stored in HTTP-only cookies
+   - Session management via NextAuth.js
+   - Database sessions for OAuth
+   - JWT sessions for credentials
+
+4. **Background Job Processing**
+   - Inngest for async tasks
+   - Email notifications (job created, application received)
+   - Job expiration scheduling
+   - WhatsApp notifications via external bridge
+
+5. **Payment Flow**
+   - Stripe Checkout for payments
+   - Webhook verification with signature
+   - Job status updates on payment
+
+6. **File Upload Strategy**
+   - UploadThing for file hosting
+   - Direct uploads from client
+   - URL stored in database
+
+7. **Security Layers**
+   - Arcjet for bot detection & rate limiting
+   - Input validation with Zod schemas
+   - CSRF protection via NextAuth
+   - SQL injection prevention via Prisma
+
+8. **Internationalization**
+   - next-intl for German/English support
+   - Translations in `/messages/` directory
+   - Server-side translation loading
+
+---
+
+### KEY FEATURES SUMMARY
+
+**For Employers:**
+- Post jobs with flexible scheduling (multiple dates/times)
+- Manage applications with status tracking
+- Payment system for job listing fees
+- Dashboard with job analytics
+- Email notifications for applications
+
+**For Job Seekers:**
+- Create profile with identity verification
+- Apply for jobs (with or without account)
+- Track application status
+- Save favorite jobs
+- Dashboard with application history
+- Email notifications for job matches
+
+**For Admins:**
+- User management (view/edit users, companies, job seekers)
+- Job post management
+- Application review and candidate selection
+- Send selected candidates to employers
+
+---
+
+### INTEGRATION POINTS
+
+**External Services:**
+- **Stripe**: Payment processing
+- **AWS SES**: Email delivery
+- **UploadThing**: File uploads & hosting
+- **Inngest**: Background job processing
+- **Sentry**: Error monitoring
+- **Arcjet**: Security & rate limiting
+- **WhatsApp Bridge**: Custom Go service for WhatsApp notifications
+
+**Environment Variables Required:**
+```
+DATABASE_URL=postgresql://...
+AUTH_SECRET=...
+AUTH_GOOGLE_ID=...
+AUTH_GOOGLE_SECRET=...
+SECRET_STRIPE_KEY=...
+STRIPE_WEBHOOK_SECRET=...
+AWS_ACCESS_KEY_ID=...
+AWS_SECRET_ACCESS_KEY=...
+AWS_SES_SENDER=...
+INNGEST_EVENT_KEY=...
+UPLOADTHING_TOKEN=...
+NEXT_PUBLIC_URL=...
+ADMIN_RECEIVER_EMAIL=...
+WHATSAPP_API_URL=...
+WHATSAPP_PHONE_NUMBER=...
+```
+
+---
+
+This backend is well-architected for a web application but would require significant REST API additions for native mobile app support. The data model is comprehensive and the authentication system is robust. The use of modern tools like Prisma, NextAuth.js, and Inngest shows good technical choices for a scalable job platform.

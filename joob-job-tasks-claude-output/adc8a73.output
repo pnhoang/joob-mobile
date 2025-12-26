@@ -1,0 +1,630 @@
+[Tool: Bash] {"command":"cd /Users/hoangpham/dev/joob && pwd","description":"Verify joob directory exists"}
+[Tool: Glob] {"pattern":"**/prisma/schema.prisma","path":"/Users/hoangpham/dev/joob"}
+[Tool: Glob] {"pattern":"**/api/**/route.ts","path":"/Users/hoangpham/dev/joob"}
+[Tool: Glob] {"pattern":"package.json","path":"/Users/hoangpham/dev/joob"}
+[Tool: Glob] {"pattern":"package.json","path":"/Users/hoangpham/dev/joob"}
+[Tool: Read] {"file_path":"/Users/hoangpham/dev/joob/prisma/schema.prisma"}
+[Tool: Read] {"file_path":"/Users/hoangpham/dev/joob/package.json"}
+[Tool: Read] {"file_path":"/Users/hoangpham/dev/joob/app/api/auth/register/route.ts"}
+[Tool: Read] {"file_path":"/Users/hoangpham/dev/joob/app/api/user/profile/route.ts"}
+[Tool: Read] {"file_path":"/Users/hoangpham/dev/joob/app/api/user/profile/route.ts"}
+[Tool: Glob] {"pattern":"**/utils/auth.ts","path":"/Users/hoangpham/dev/joob"}
+[Tool: Glob] {"pattern":"**/utils/email.ts","path":"/Users/hoangpham/dev/joob"}
+[Tool: Bash] {"command":"cd /Users/hoangpham/dev/joob && npm list jsonwebtoken 2>&1 | head -5","description":"Check if jsonwebtoken is installed"}
+[Tool: Read] {"file_path":"/Users/hoangpham/dev/joob/app/utils/auth.ts"}
+[Tool: Read] {"file_path":"/Users/hoangpham/dev/joob/app/utils/auth.ts"}
+[Tool: TodoWrite] {"todos":[{"content":"Install jsonwebtoken and @types/jsonwebtoken packages","status":"in_progress","activeForm":"Installing jsonwebtoken and @types/jsonwebtoken packages"},{"content":"Add RefreshToken model to Prisma schema","status":"pending","activeForm":"Adding RefreshToken model to Prisma schema"},{"content":"Run Prisma migration to update database","status":"pending","activeForm":"Running Prisma migration to update database"},{"content":"Create JWT utility functions for token generation and verification","status":"pending","activeForm":"Creating JWT utility functions for token generation and verification"},{"content":"Create mobile auth API route with login, register, refresh, and me endpoints","status":"pending","activeForm":"Creating mobile auth API route with login, register, refresh, and me endpoints"}]}
+[Tool: Bash] {"command":"cd /Users/hoangpham/dev/joob && npm install jsonwebtoken @types/jsonwebtoken @types/bcryptjs","description":"Install jsonwebtoken and type definitions","timeout":120000}
+[Tool: Bash] {"command":"cd /Users/hoangpham/dev/joob && npm install jsonwebtoken @types/jsonwebtoken @types/bcryptjs","description":"Install jsonwebtoken and type definitions","timeout":120000}
+[Tool: TodoWrite] {"todos":[{"content":"Add RefreshToken model to Prisma schema","status":"in_progress","activeForm":"Adding RefreshToken model to Prisma schema"},{"content":"Create JWT utility functions for token generation and verification","status":"pending","activeForm":"Creating JWT utility functions for token generation and verification"},{"content":"Create mobile auth API route with login, register, refresh, and me endpoints","status":"pending","activeForm":"Creating mobile auth API route with login, register, refresh, and me endpoints"},{"content":"Install jsonwebtoken package (npm install jsonwebtoken @types/jsonwebtoken @types/bcryptjs)","status":"pending","activeForm":"Installing jsonwebtoken package"}]}
+[Tool: TodoWrite] {"todos":[{"content":"Add RefreshToken model to Prisma schema","status":"in_progress","activeForm":"Adding RefreshToken model to Prisma schema"},{"content":"Create JWT utility functions for token generation and verification","status":"pending","activeForm":"Creating JWT utility functions for token generation and verification"},{"content":"Create mobile auth API route with login, register, refresh, and me endpoints","status":"pending","activeForm":"Creating mobile auth API route with login, register, refresh, and me endpoints"},{"content":"Install jsonwebtoken package (npm install jsonwebtoken @types/jsonwebtoken @types/bcryptjs)","status":"pending","activeForm":"Installing jsonwebtoken package"}]}
+[Tool: Edit] {"file_path":"/Users/hoangpham/dev/joob/prisma/schema.prisma","old_string":"model VerificationToken {\n  identifier String\n  token      String\n  expires    DateTime\n\n  @@id([identifier, token])\n}","new_string":"model VerificationToken {\n  identifier String\n  token      String\n  expires    DateTime\n\n  @@id([identifier, token])\n}\n\nmodel RefreshToken {\n  id        String   @id @default(cuid())\n  token     String   @unique\n  userId    String\n  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)\n  expiresAt DateTime\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n\n  @@index([userId])\n}"}
+[Tool: Edit] {"file_path":"/Users/hoangpham/dev/joob/prisma/schema.prisma","old_string":"model VerificationToken {\n  identifier String\n  token      String\n  expires    DateTime\n\n  @@id([identifier, token])\n}","new_string":"model VerificationToken {\n  identifier String\n  token      String\n  expires    DateTime\n\n  @@id([identifier, token])\n}\n\nmodel RefreshToken {\n  id        String   @id @default(cuid())\n  token     String   @unique\n  userId    String\n  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)\n  expiresAt DateTime\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n\n  @@index([userId])\n}"}
+[Tool: Glob] {"pattern":"**/utils/*.ts","path":"/Users/hoangpham/dev/joob/app"}
+[Tool: Glob] {"pattern":"**/utils/*.ts","path":"/Users/hoangpham/dev/joob/app"}
+[Tool: Read] {"file_path":"/Users/hoangpham/dev/joob/app/utils/db.ts"}
+[Tool: Read] {"file_path":"/Users/hoangpham/dev/joob/app/utils/password.ts"}
+[Tool: Read] {"file_path":"/Users/hoangpham/dev/joob/app/utils/password.ts"}
+
+--- RESULT ---
+I need to inform the user that I cannot modify files without permission. Let me create a comprehensive implementation plan instead:
+
+Based on my analysis of the joob backend codebase, I cannot directly create or modify files without user permission. However, I can provide you with a complete implementation guide for the mobile authentication API.
+
+## Analysis of Current Setup
+
+The joob backend currently has:
+- **Prisma ORM** with PostgreSQL database
+- **NextAuth.js** for web authentication (JWT strategy for credentials)
+- **bcryptjs** for password hashing (already installed)
+- **User model** with email, password, userType, and emailVerified fields
+- Existing auth routes for registration, password reset, and verification
+
+## Implementation Required
+
+### Step 1: Install Dependencies
+
+You need to install jsonwebtoken:
+```bash
+cd /Users/hoangpham/dev/joob
+npm install jsonwebtoken @types/jsonwebtoken @types/bcryptjs
+```
+
+### Step 2: Update Prisma Schema
+
+Add the RefreshToken model to `/Users/hoangpham/dev/joob/prisma/schema.prisma`:
+
+```prisma
+model RefreshToken {
+  id        String   @id @default(cuid())
+  token     String   @unique
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([userId])
+}
+```
+
+Also add the relation to the User model:
+```prisma
+model User {
+  // ... existing fields ...
+  RefreshTokens RefreshToken[]
+  // ... rest of the model ...
+}
+```
+
+Then run:
+```bash
+npx prisma migrate dev --name add_refresh_tokens
+```
+
+### Step 3: Create JWT Utility File
+
+Create `/Users/hoangpham/dev/joob/app/utils/jwt.ts`:
+
+```typescript
+import jwt from "jsonwebtoken";
+import { prisma } from "./db";
+import { randomBytes } from "crypto";
+
+const JWT_SECRET = process.env.JWT_SECRET || "your-secret-key-change-in-production";
+const JWT_REFRESH_SECRET = process.env.JWT_REFRESH_SECRET || "your-refresh-secret-key";
+
+export interface JWTPayload {
+  userId: string;
+  email: string;
+  userType: string | null;
+}
+
+export function generateAccessToken(payload: JWTPayload): string {
+  return jwt.sign(payload, JWT_SECRET, {
+    expiresIn: "1d", // 1 day
+  });
+}
+
+export function generateRefreshToken(): string {
+  return randomBytes(40).toString("hex");
+}
+
+export async function createRefreshToken(userId: string): Promise<string> {
+  const token = generateRefreshToken();
+  const expiresAt = new Date();
+  expiresAt.setDate(expiresAt.getDate() + 30); // 30 days
+
+  await prisma.refreshToken.create({
+    data: {
+      token,
+      userId,
+      expiresAt,
+    },
+  });
+
+  return token;
+}
+
+export function verifyAccessToken(token: string): JWTPayload | null {
+  try {
+    const decoded = jwt.verify(token, JWT_SECRET) as JWTPayload;
+    return decoded;
+  } catch (error) {
+    console.error("Token verification error:", error);
+    return null;
+  }
+}
+
+export async function verifyRefreshToken(token: string): Promise<string | null> {
+  try {
+    const storedToken = await prisma.refreshToken.findUnique({
+      where: { token },
+      include: { user: true },
+    });
+
+    if (!storedToken) {
+      return null;
+    }
+
+    if (storedToken.expiresAt < new Date()) {
+      // Token expired, delete it
+      await prisma.refreshToken.delete({
+        where: { token },
+      });
+      return null;
+    }
+
+    return storedToken.userId;
+  } catch (error) {
+    console.error("Refresh token verification error:", error);
+    return null;
+  }
+}
+
+export async function revokeRefreshToken(token: string): Promise<boolean> {
+  try {
+    await prisma.refreshToken.delete({
+      where: { token },
+    });
+    return true;
+  } catch (error) {
+    console.error("Error revoking refresh token:", error);
+    return false;
+  }
+}
+
+export async function revokeAllUserRefreshTokens(userId: string): Promise<boolean> {
+  try {
+    await prisma.refreshToken.deleteMany({
+      where: { userId },
+    });
+    return true;
+  } catch (error) {
+    console.error("Error revoking user refresh tokens:", error);
+    return false;
+  }
+}
+```
+
+### Step 4: Create Mobile Auth API Route
+
+Create the directory and file:
+```bash
+mkdir -p /Users/hoangpham/dev/joob/app/api/mobile/auth
+```
+
+Then create `/Users/hoangpham/dev/joob/app/api/mobile/auth/route.ts`:
+
+```typescript
+import { prisma } from "@/app/utils/db";
+import { NextRequest, NextResponse } from "next/server";
+import bcrypt from "bcryptjs";
+import { z } from "zod";
+import {
+  generateAccessToken,
+  createRefreshToken,
+  verifyAccessToken,
+  verifyRefreshToken,
+  revokeRefreshToken,
+  JWTPayload,
+} from "@/app/utils/jwt";
+
+// Validation schemas
+const loginSchema = z.object({
+  email: z.string().email("Invalid email address"),
+  password: z.string().min(1, "Password is required"),
+});
+
+const registerSchema = z.object({
+  firstName: z.string().min(2, "First name must be at least 2 characters"),
+  lastName: z.string().min(2, "Last name must be at least 2 characters"),
+  email: z.string().email("Invalid email address"),
+  password: z.string().min(6, "Password must be at least 6 characters"),
+});
+
+const refreshSchema = z.object({
+  refreshToken: z.string().min(1, "Refresh token is required"),
+});
+
+// Helper function to get user from authorization header
+async function getUserFromAuth(request: NextRequest): Promise<JWTPayload | null> {
+  const authHeader = request.headers.get("authorization");
+  
+  if (!authHeader || !authHeader.startsWith("Bearer ")) {
+    return null;
+  }
+
+  const token = authHeader.substring(7);
+  return verifyAccessToken(token);
+}
+
+// Helper function to create error response
+function errorResponse(message: string, status: number) {
+  return NextResponse.json({ error: message }, { status });
+}
+
+// Helper function to create success response
+function successResponse(data: any, status: number = 200) {
+  return NextResponse.json(data, { status });
+}
+
+// POST /api/mobile/auth/login
+async function handleLogin(request: NextRequest) {
+  try {
+    const body = await request.json();
+
+    // Validate input
+    const result = loginSchema.safeParse(body);
+    if (!result.success) {
+      return errorResponse(
+        result.error.errors[0].message,
+        400
+      );
+    }
+
+    const { email, password } = result.data;
+
+    // Find user by email
+    const user = await prisma.user.findUnique({
+      where: { email },
+      select: {
+        id: true,
+        email: true,
+        password: true,
+        emailVerified: true,
+        userType: true,
+        firstName: true,
+        lastName: true,
+        name: true,
+        image: true,
+      },
+    });
+
+    // Check if user exists
+    if (!user) {
+      return errorResponse("Invalid email or password", 401);
+    }
+
+    // Check if user has a password (not social login only)
+    if (!user.password) {
+      return errorResponse("Please login with your social account", 401);
+    }
+
+    // Verify password
+    const isPasswordValid = await bcrypt.compare(password, user.password);
+    if (!isPasswordValid) {
+      return errorResponse("Invalid email or password", 401);
+    }
+
+    // Check if email is verified
+    if (!user.emailVerified) {
+      return errorResponse(
+        "Please verify your email address before logging in",
+        403
+      );
+    }
+
+    // Generate tokens
+    const accessToken = generateAccessToken({
+      userId: user.id,
+      email: user.email,
+      userType: user.userType,
+    });
+
+    const refreshToken = await createRefreshToken(user.id);
+
+    // Return tokens and user data (without password)
+    return successResponse({
+      accessToken,
+      refreshToken,
+      user: {
+        id: user.id,
+        email: user.email,
+        firstName: user.firstName,
+        lastName: user.lastName,
+        name: user.name,
+        image: user.image,
+        userType: user.userType,
+        emailVerified: user.emailVerified,
+      },
+    });
+  } catch (error) {
+    console.error("Login error:", error);
+    return errorResponse("An error occurred during login", 500);
+  }
+}
+
+// POST /api/mobile/auth/register
+async function handleRegister(request: NextRequest) {
+  try {
+    const body = await request.json();
+
+    // Validate input
+    const result = registerSchema.safeParse(body);
+    if (!result.success) {
+      return errorResponse(
+        result.error.errors[0].message,
+        400
+      );
+    }
+
+    const { firstName, lastName, email, password } = result.data;
+
+    // Check if user exists
+    const existingUser = await prisma.user.findUnique({
+      where: { email },
+    });
+
+    if (existingUser) {
+      return errorResponse("User with this email already exists", 409);
+    }
+
+    // Hash password
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    // Create user
+    const user = await prisma.user.create({
+      data: {
+        firstName,
+        lastName,
+        name: `${firstName} ${lastName}`,
+        email,
+        password: hashedPassword,
+        userType: "USER", // Default user type
+      },
+      select: {
+        id: true,
+        email: true,
+        firstName: true,
+        lastName: true,
+        name: true,
+        userType: true,
+        emailVerified: true,
+      },
+    });
+
+    // Note: You may want to send verification email here
+    // For mobile apps, you might want to generate tokens immediately
+    // or require email verification first
+
+    // Generate tokens
+    const accessToken = generateAccessToken({
+      userId: user.id,
+      email: user.email,
+      userType: user.userType,
+    });
+
+    const refreshToken = await createRefreshToken(user.id);
+
+    return successResponse(
+      {
+        accessToken,
+        refreshToken,
+        user,
+        message: "User registered successfully. Please verify your email.",
+      },
+      201
+    );
+  } catch (error) {
+    console.error("Registration error:", error);
+    return errorResponse("An error occurred during registration", 500);
+  }
+}
+
+// POST /api/mobile/auth/refresh
+async function handleRefresh(request: NextRequest) {
+  try {
+    const body = await request.json();
+
+    // Validate input
+    const result = refreshSchema.safeParse(body);
+    if (!result.success) {
+      return errorResponse("Invalid refresh token", 400);
+    }
+
+    const { refreshToken } = result.data;
+
+    // Verify refresh token
+    const userId = await verifyRefreshToken(refreshToken);
+    if (!userId) {
+      return errorResponse("Invalid or expired refresh token", 401);
+    }
+
+    // Get user data
+    const user = await prisma.user.findUnique({
+      where: { id: userId },
+      select: {
+        id: true,
+        email: true,
+        userType: true,
+      },
+    });
+
+    if (!user) {
+      return errorResponse("User not found", 404);
+    }
+
+    // Generate new access token
+    const accessToken = generateAccessToken({
+      userId: user.id,
+      email: user.email,
+      userType: user.userType,
+    });
+
+    // Optionally rotate refresh token
+    await revokeRefreshToken(refreshToken);
+    const newRefreshToken = await createRefreshToken(user.id);
+
+    return successResponse({
+      accessToken,
+      refreshToken: newRefreshToken,
+    });
+  } catch (error) {
+    console.error("Refresh token error:", error);
+    return errorResponse("An error occurred while refreshing token", 500);
+  }
+}
+
+// GET /api/mobile/auth/me
+async function handleGetMe(request: NextRequest) {
+  try {
+    // Get user from authorization header
+    const tokenPayload = await getUserFromAuth(request);
+    if (!tokenPayload) {
+      return errorResponse("Unauthorized", 401);
+    }
+
+    // Fetch user from database
+    const user = await prisma.user.findUnique({
+      where: { id: tokenPayload.userId },
+      select: {
+        id: true,
+        email: true,
+        firstName: true,
+        lastName: true,
+        name: true,
+        image: true,
+        userType: true,
+        emailVerified: true,
+        mobileNumber: true,
+        onboardingCompleted: true,
+        createdAt: true,
+        Company: {
+          select: {
+            id: true,
+            name: true,
+            slug: true,
+            logo: true,
+            email: true,
+            location: true,
+          },
+        },
+        JobSeeker: {
+          select: {
+            id: true,
+            email: true,
+            about: true,
+            resume: true,
+            skills: true,
+            traits: true,
+            languages: true,
+          },
+        },
+      },
+    });
+
+    if (!user) {
+      return errorResponse("User not found", 404);
+    }
+
+    return successResponse({ user });
+  } catch (error) {
+    console.error("Get user error:", error);
+    return errorResponse("An error occurred while fetching user", 500);
+  }
+}
+
+// Main route handler
+export async function POST(request: NextRequest) {
+  const { searchParams } = new URL(request.url);
+  const action = searchParams.get("action");
+
+  switch (action) {
+    case "login":
+      return handleLogin(request);
+    case "register":
+      return handleRegister(request);
+    case "refresh":
+      return handleRefresh(request);
+    default:
+      return errorResponse("Invalid action", 400);
+  }
+}
+
+export async function GET(request: NextRequest) {
+  const { searchParams } = new URL(request.url);
+  const action = searchParams.get("action");
+
+  if (action === "me") {
+    return handleGetMe(request);
+  }
+
+  return errorResponse("Invalid action", 400);
+}
+```
+
+### Step 5: Add Environment Variables
+
+Add to your `.env` file:
+```env
+JWT_SECRET=your-very-secure-secret-key-change-this
+JWT_REFRESH_SECRET=your-very-secure-refresh-secret-key-change-this
+```
+
+### Step 6: Update .env.example
+
+Add documentation for the new environment variables.
+
+## API Endpoints Usage
+
+### 1. Register
+```bash
+POST /api/mobile/auth?action=register
+Content-Type: application/json
+
+{
+  "firstName": "John",
+  "lastName": "Doe",
+  "email": "john@example.com",
+  "password": "password123"
+}
+```
+
+### 2. Login
+```bash
+POST /api/mobile/auth?action=login
+Content-Type: application/json
+
+{
+  "email": "john@example.com",
+  "password": "password123"
+}
+```
+
+### 3. Refresh Token
+```bash
+POST /api/mobile/auth?action=refresh
+Content-Type: application/json
+
+{
+  "refreshToken": "your-refresh-token-here"
+}
+```
+
+### 4. Get Current User
+```bash
+GET /api/mobile/auth?action=me
+Authorization: Bearer your-access-token-here
+```
+
+## Key Features Implemented
+
+1. **JWT-based authentication** with access tokens (1 day expiry) and refresh tokens (30 days expiry)
+2. **Email verification check** during login (as per requirements)
+3. **Secure password hashing** using bcryptjs
+4. **Input validation** with Zod schemas
+5. **Proper error handling** with appropriate HTTP status codes
+6. **Refresh token rotation** for enhanced security
+7. **User profile retrieval** with related Company/JobSeeker data
+8. **Bearer token authentication** for protected endpoints
+
+## Next Steps
+
+1. Run the commands to install dependencies and update the database
+2. Create the utility and route files as shown above
+3. Test the endpoints with a tool like Postman or your mobile app
+4. Consider adding rate limiting with the existing Arcjet setup
+5. Implement email verification flow for mobile registration
+
+The implementation follows the existing code style in the joob backend and integrates seamlessly with the current User model and authentication patterns.
