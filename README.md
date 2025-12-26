@@ -1,3 +1,12 @@
+## Backend
+
+Backend in this current folder is not used. it's for the BookWorm backend app. 
+The mobile app will use Backend from joob folder. 
+
+
+## Archived
+
+
 <h1 align="center">📚 BookWorm – Full‑Stack React Native App 🚀</h1>
 
 ![Demo App](/mobile/assets/images/screenshot-for-readme.png)
